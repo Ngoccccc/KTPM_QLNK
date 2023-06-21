@@ -9,3 +9,4 @@ const SoHoKhau = require("./SoHoKhau");
 const ThayDoiNhanKhau = require("./ThayDoiNhanKhau");
 const ThayDoiHoKhau = require("./ThayDoiHoKhau");
 const Thuoc = require("./Thuoc");
+
