@@ -1,25 +1,17 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
-const User = conn.define("User", {
+const HopToDanPho = conn.define("HopToDanPho", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  soCCCD: {
-    type: DataTypes.STRING,
+  thoiGianBatDau: {
+    type: DataTypes.DATE,
     allowNull: false,
   },
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  role: {
+  diaDiem: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -28,10 +20,10 @@ const User = conn.define("User", {
 conn
   .sync()
   .then(() => {
-    console.log("User table created successfully!");
+    console.log("HopToDanPho table created successfully!");
   })
   .catch((error) => {
     console.error("Unable to create table : ", error);
   });
 
-module.exports = User;
+module.exports = HopToDanPho;
