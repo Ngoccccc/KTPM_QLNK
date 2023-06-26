@@ -8,6 +8,7 @@ const ThayDoiHoKhau = conn.define(
     soHoKhau: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       allowNull: false,
     },
     loaiThayDoi: {

@@ -11,10 +11,12 @@ const GiayTamTru = conn.define(
     },
     hoKhauTamTru: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false,
     },
     soCCCD: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false,
     },
     ngayBatDau: {

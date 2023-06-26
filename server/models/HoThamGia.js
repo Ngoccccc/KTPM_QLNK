@@ -7,10 +7,12 @@ const HoThamGia = conn.define(
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       allowNull: false,
     },
     soHoKhau: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false,
     },
   },

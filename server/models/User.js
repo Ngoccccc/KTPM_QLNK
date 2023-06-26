@@ -10,8 +10,9 @@ const User = conn.define(
       autoIncrement: true,
     },
     soCCCD: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
+      unique: true,
     },
     username: {
       type: DataTypes.STRING,
@@ -25,13 +26,18 @@ const User = conn.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    tokens: {
-      token: DataTypes.STRING,
+    token: {
+      type: DataTypes.STRING,
+      required: true,
+    },
+    refeshtoken: {
+      type: DataTypes.STRING,
       required: true,
     },
   },
   {
     tableName: "user",
+    // timestamps: false,
   }
 );
 

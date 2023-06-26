@@ -7,6 +7,7 @@ const HopToDanPho = conn.define(
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       autoIncrement: true,
     },
     thoiGianBatDau: {

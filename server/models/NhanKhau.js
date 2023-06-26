@@ -46,6 +46,7 @@ const NhanKhau = conn.define(
     },
     soCCCD: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false,
     },
     ngayCap: {

@@ -8,10 +8,12 @@ const ThayDoiNhanKhau = conn.define(
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       autoIncrement: true,
     },
     soCCCD: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false,
     },
     loaiThayDoi: {

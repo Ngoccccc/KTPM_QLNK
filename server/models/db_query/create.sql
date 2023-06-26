@@ -1,74 +1,76 @@
+-- 
 drop database db_ktpm; 
 create database db_ktpm;
 use db_ktpm;
 CREATE TABLE `user` (
-  `id` int PRIMARY KEY,
-  `username` VARCHAR(50),
-  `password` VARCHAR(50),
-  `role` VARCHAR(50)
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `soCCCD` int NOT NULL,
+  `username` VARCHAR(255),
+  `password` VARCHAR(255),
+  `role` VARCHAR(255)
 );
 
 CREATE TABLE `sohokhau` (
   `soHoKhau` int PRIMARY KEY,
   `soNha` int,
-  `duongPho` VARCHAR(50),
-  `phuong` VARCHAR(50),
-  `quan` VARCHAR(50),
-  `ngayTao` VARCHAR(50)
+  `duongPho` VARCHAR(255),
+  `phuong` VARCHAR(255),
+  `quan` VARCHAR(255),
+  `ngayTao` VARCHAR(255)
 );
 
 CREATE TABLE `nhankhau` (
   `soCCCD` int PRIMARY KEY,
-  `hoTen` VARCHAR(50),
-  `biDanh` VARCHAR(50),
-  `gioiTinh` VARCHAR(50),
+  `hoTen` VARCHAR(255),
+  `biDanh` VARCHAR(255),
+  `gioiTinh` VARCHAR(255),
   `ngayThangNamSinh` Date,
-  `noiSinh` VARCHAR(50),
-  `nguyenQuan` VARCHAR(50),
-  `dantoc` VARCHAR(50),
-  `quocTich` VARCHAR(50),
-  `ngheNghiep` VARCHAR(50),
-  `noiLamViec` VARCHAR(50),
+  `noiSinh` VARCHAR(255),
+  `nguyenQuan` VARCHAR(255),
+  `dantoc` VARCHAR(255),
+  `quocTich` VARCHAR(255),
+  `ngheNghiep` VARCHAR(255),
+  `noiLamViec` VARCHAR(255),
   `ngayCap` Date,
-  `noiCap` VARCHAR(50),
-  `quanHeVoiChuHo` VARCHAR(50)
+  `noiCap` VARCHAR(255),
+  `quanHeVoiChuHo` VARCHAR(255)
 );
 
 CREATE TABLE `giaytamvang` (
   `id` int PRIMARY KEY,
-  `diaChiThuongChu` VARCHAR(50),
+  `diaChiThuongChu` VARCHAR(255),
   `hoKhauTamVang` int,
   `soCCCD` int,
   `ngayBatDau` Date,
   `ngayKetThuc` Date,
   `ngayDangKi` Date,
-  `lyDoTamVang` VARCHAR(50)
+  `lyDoTamVang` VARCHAR(255)
 );
 
 CREATE TABLE `giaytamtru` (
   `id` int PRIMARY KEY,
-  `diaChiThuongChu` VARCHAR(50),
+  `diaChiThuongChu` VARCHAR(255),
   `hoKhauTamTru` int,
   `soCCCD` int,
   `ngayBatDau` Date,
   `ngayKetThuc` Date,
   `ngayDangKi` Date,
-  `lyDoTamTru` VARCHAR(50)
+  `lyDoTamTru` VARCHAR(255)
 );
 
 CREATE TABLE `thaydoinhankhau` (
   `id` int,
   `soCCCD` int,
-  `loaiThayDoi` VARCHAR(50),
+  `loaiThayDoi` VARCHAR(255),
   `ngayThayDoi` Date,
-  `chiTietThayDoi` VARCHAR(50)
+  `chiTietThayDoi` VARCHAR(255)
 );
 
 CREATE TABLE `thaydoihokhau` (
   `soHoKhau` int,
-  `loaiThayDoi` VARCHAR(50),
+  `loaiThayDoi` VARCHAR(255),
   `ngayThayDoi` Date,
-  `chiTietThayDoi` VARCHAR(50)
+  `chiTietThayDoi` VARCHAR(255)
 );
 
 CREATE TABLE `thuoc` (
@@ -86,7 +88,7 @@ CREATE TABLE `chuho` (
 CREATE TABLE `hoptodanpho` (
   `id` int primary key,
   `thoiGianBatDau` Date,
-  `diaDiem` VARCHAR(50)
+  `diaDiem` VARCHAR(255)
 );
 
 CREATE TABLE `hothamgia` (

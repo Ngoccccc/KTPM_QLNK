@@ -6,10 +6,12 @@ const Thuoc = conn.define(
   {
     soHoKhau: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false,
     },
     soCCCD: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull: false,
     },
   },

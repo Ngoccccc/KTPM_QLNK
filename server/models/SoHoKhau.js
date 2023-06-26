@@ -7,6 +7,7 @@ const SoHoKhau = conn.define(
     soHoKhau: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       autoIncrement: true,
     },
     soNha: {
