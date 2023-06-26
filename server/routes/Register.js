@@ -1,7 +1,6 @@
 var express = require("express");
 var User = require("../models/User");
 const bcrypt = require("bcrypt");
-const KEY = process.env.KEY_HASH;
 const saltRounds = 10;
 var conn = require("../models/connectDB");
 
