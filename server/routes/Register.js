@@ -8,9 +8,9 @@ var conn = require("../models/connectDB");
 var router = express.Router();
 
 router.post("/register", function (req, res, next) {
-  bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+  bcrypt.hash(req.body.password, saltRounds, async function (err, hash) {
     try {
-      User.create({
+      await User.create({
         username: req.body.username,
         soCCCD: req.body.soCCCD,
         password: hash,
