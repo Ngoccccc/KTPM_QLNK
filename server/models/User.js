@@ -25,6 +25,10 @@ const User = conn.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    tokens: {
+      token: DataTypes.STRING,
+      required: true,
+    },
   },
   {
     tableName: "user",
