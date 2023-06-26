@@ -1,16 +1,22 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
-const Thuoc = conn.define("Thuoc", {
-  soHoKhau: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
+const Thuoc = conn.define(
+  "Thuoc",
+  {
+    soHoKhau: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    soCCCD: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
-  soCCCD: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-});
+  {
+    tableName: "Thuoc",
+  }
+);
 
 conn
   .sync()

@@ -2,25 +2,31 @@ const { DataTypes } = require("sequelize");
 
 const conn = require("./connectDB");
 
-const ThayDoiHoKhau = conn.define("ThayDoiHoKhau", {
-  soHoKhau: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    allowNull: false,
+const ThayDoiHoKhau = conn.define(
+  "ThayDoiHoKhau",
+  {
+    soHoKhau: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+    },
+    loaiThayDoi: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    ngayThayDoi: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    chiTietThayDoi: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  loaiThayDoi: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  ngayThayDoi: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  chiTietThayDoi: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+  {
+    tableName: "thaydoihokhau",
+  }
+);
 
 conn
   .sync()

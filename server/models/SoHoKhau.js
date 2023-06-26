@@ -1,33 +1,39 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
-const SoHoKhau = conn.define("SoHoKhau", {
-  soHoKhau: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+const SoHoKhau = conn.define(
+  "SoHoKhau",
+  {
+    soHoKhau: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    soNha: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    duongPho: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phuong: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    quan: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    ngayTao: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  soNha: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  duongPho: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  phuong: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  quan: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  ngayTao: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+  {
+    tableName: "sohokhau",
+  }
+);
 
 conn
   .sync()
