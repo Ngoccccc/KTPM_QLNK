@@ -13,11 +13,19 @@ const GiayTamTru = conn.define(
       type: DataTypes.INTEGER,
       unique: true,
       allowNull: false,
+      references: {
+        model: SoHoKhau,
+        key: "soHoKhau",
+      },
     },
     soCCCD: {
       type: DataTypes.INTEGER,
       unique: true,
       allowNull: false,
+      references: {
+        model: NhanKhau,
+        key: "soCCCD",
+      },
     },
     ngayBatDau: {
       type: DataTypes.DATE,

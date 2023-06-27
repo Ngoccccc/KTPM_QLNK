@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
+const NhanKhau = require("./NhanKhau");
 
 const ThayDoiNhanKhau = conn.define(
   "ThayDoiNhanKhau",
@@ -15,6 +16,10 @@ const ThayDoiNhanKhau = conn.define(
       type: DataTypes.INTEGER,
       unique: true,
       allowNull: false,
+      references: {
+        model: NhanKhau,
+        key: "soCCCD",
+      },
     },
     loaiThayDoi: {
       type: DataTypes.STRING,

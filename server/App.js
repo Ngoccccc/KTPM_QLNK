@@ -6,6 +6,7 @@ const conn = require("./models/connectDB");
 // // connect to database
 const register = require("./routes/Register");
 const login = require("./routes/Login");
+const hokhau = require("./routes/HoKhau");
 
 const app = express();
 app.use(cors());
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", register);
 app.use("/", login);
-// app.use("/post", postRouter);
+app.use("/", hokhau);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

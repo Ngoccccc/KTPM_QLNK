@@ -1,17 +1,28 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
+// conn.query("");
+const NhanKhau = require("./NhanKhau");
+const SoHoKhau = require("./SoHoKhau");
 const ChuHo = conn.define(
   "ChuHo",
   {
     soHoKhau: {
       type: DataTypes.INTEGER,
-      unique: true,
+      primaryKey: true,
+      references: {
+        model: SoHoKhau,
+        key: "soHoKhau",
+      },
       allowNull: false,
     },
     soCCCD: {
       type: DataTypes.INTEGER,
-      unique: true,
+      primaryKey: true,
+      references: {
+        model: NhanKhau,
+        key: "soCCCD",
+      },
       allowNull: false,
     },
   },

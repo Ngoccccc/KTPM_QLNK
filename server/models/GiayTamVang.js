@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
-
+const NhanKhau = require("./NhanKhau");
+const SoHoKhau = require("./SoHoKhau");
 const conn = require("./connectDB");
 const GiayTamVang = conn.define(
   "GiayTamVang",
@@ -12,11 +13,19 @@ const GiayTamVang = conn.define(
       type: DataTypes.INTEGER,
       unique: true,
       allowNull: false,
+      references: {
+        model: SoHoKhau,
+        key: "soHoKhau",
+      },
     },
     soCCCD: {
       type: DataTypes.INTEGER,
       unique: true,
       allowNull: false,
+      references: {
+        model: NhanKhau,
+        key: "soCCCD",
+      },
     },
     ngayBatDau: {
       type: DataTypes.DATE,
