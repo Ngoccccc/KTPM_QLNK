@@ -13,6 +13,9 @@ const User = conn.define(
       type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
+      validate: {
+        notEmpty: true,
+      },
     },
     username: {
       type: DataTypes.STRING,

@@ -9,6 +9,9 @@ const SoHoKhau = conn.define(
       primaryKey: true,
       unique: true,
       autoIncrement: true,
+      validate: {
+        notEmpty: true,
+      },
     },
     soNha: {
       type: DataTypes.INTEGER,
@@ -23,10 +26,6 @@ const SoHoKhau = conn.define(
       allowNull: false,
     },
     quan: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    ngayTao: {
       type: DataTypes.STRING,
       allowNull: false,
     },

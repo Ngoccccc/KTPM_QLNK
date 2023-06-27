@@ -4,6 +4,14 @@ const conn = require("./connectDB");
 const NhanKhau = conn.define(
   "NhanKhau",
   {
+    soCCCD: {
+      type: DataTypes.INTEGER,
+      unique: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
     hoTen: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -44,11 +52,7 @@ const NhanKhau = conn.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    soCCCD: {
-      type: DataTypes.INTEGER,
-      unique: true,
-      allowNull: false,
-    },
+
     ngayCap: {
       type: DataTypes.DATE,
       allowNull: false,
