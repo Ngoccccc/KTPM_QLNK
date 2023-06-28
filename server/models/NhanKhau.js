@@ -37,7 +37,7 @@ const NhanKhau = conn.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    dantoc: {
+    danToc: {
       type: DataTypes.STRING,
       allowNull: false,
     },

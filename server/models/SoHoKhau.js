@@ -50,4 +50,11 @@ conn
 //   phuong: "VinhTuy",
 //   quan: "HaiBaTrung",
 // });
+// SoHoKhau.create({
+//   soHoKhau: 1,
+//   soNha: 52,
+//   duongPho: "CayDa",
+//   phuong: "CoLoa",
+//   quan: "DongAnh",
+// });
 module.exports = SoHoKhau;

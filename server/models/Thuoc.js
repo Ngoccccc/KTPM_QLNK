@@ -16,6 +16,7 @@ const Thuoc = conn.define(
     soCCCD: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       references: {
         model: NhanKhau,
         key: "soCCCD",
