@@ -19,7 +19,8 @@ app.use(express.json());
 app.use("/", register);
 app.use("/", login);
 app.use("/hokhau", hokhau);
-app.use("/nhankhau", nhankhau)
+app.use("/nhankhau", nhankhau);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
