@@ -4,7 +4,7 @@ const db_name = "db_ktpm";
 const user_name = "root";
 const password = "daominh";
 const db_config = {
-  port: 3306,
+  port: 3307,
   host: "localhost",
   dialect: "mysql",
 };
