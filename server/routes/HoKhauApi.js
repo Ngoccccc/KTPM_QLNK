@@ -7,7 +7,7 @@ var Thuoc = require("../models/Thuoc");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 var conn = require("../models/connectDB");
-const { QueryTypes, where } = require("sequelize");
+const { QueryTypes, where, Op } = require("sequelize");
 
 var router = express.Router();
 
@@ -55,24 +55,40 @@ router.post("/themnguoi", async function (req, res, next) {
     await SoHoKhau.findOne({ where: { soHoKhau: req.body.soHoKhau } }).then(
       async (result) => {
         if (result) {
-          await NhanKhau.create(req.body.nhanKhau);
-          await Thuoc.create({
-            soHoKhau: req.body.soHoKhau,
-            soCCCD: req.body.nhanKhau.soCCCD,
-          });
-          if (req.body.nhanKhau.quanHeVoiChuHo == "Chủ hộ") {
-            await ChuHo.create({
-              soHoKhau: req.body.soHoKhau,
-              soCCCD: req.body.nhanKhau.soCCCD,
-            });
-          }
-          res.json({ status: true });
+          await ChuHo.findOne({ where: { soHoKhau: req.body.soHoKhau } }).then(
+            async (result) => {
+              if (result) {
+                if (req.body.nhanKhau.quanHeVoiChuHo != "Chủ hộ") {
+                  await NhanKhau.create(req.body.nhanKhau);
+                  await Thuoc.create({
+                    soHoKhau: req.body.soHoKhau,
+                    soCCCD: req.body.nhanKhau.soCCCD,
+                  });
+                  await res.send({ status: true });
+                } else {
+                  res.json({ status: false });
+                }
+              } else {
+                await NhanKhau.create(req.body.nhanKhau);
+                await Thuoc.create({
+                  soHoKhau: req.body.soHoKhau,
+                  soCCCD: req.body.nhanKhau.soCCCD,
+                });
+                if (req.body.nhanKhau.quanHeVoiChuHo == "Chủ hộ") {
+                  await ChuHo.create({
+                    soHoKhau: req.body.soHoKhau,
+                    soCCCD: req.body.nhanKhau.soCCCD,
+                  });
+                }
+                res.json({ status: true });
+              }
+            }
+          );
         } else {
           res.json({ status: false });
         }
       }
     );
-    // console.log("khong null");
   } catch (error) {
     console.log(error);
     res.status(400);
@@ -83,14 +99,38 @@ router.post("/themnguoi", async function (req, res, next) {
 });
 router.post("/tachhokhau", async function (req, res, next) {
   try {
-    console.log(req.body);
     // update quanHeVoiChuHo thanh "Chủ hộ", tạo hộ khẩu mới, thêm chủ hộ mới
     // Lấy ra danh sách người muốn tách
     // Cập nhật lại bảng thuộc
+    // Tạo hộ khẩu mới, thêm chủ hộ, thay đổi bảng thuộc
+    let a = await SoHoKhau.create(req.body.hoKhauMoi);
+    await ChuHo.create(
+      {
+        soHoKhau: a.dataValues.soHoKhau,
+        soCCCD: req.body.CCCDChuHoMoi,
+      },
+      {
+        where: {
+          soCCCD: {
+            [Op.ne]: req.body.CCCDChuHoMoi,
+          },
+        },
+      }
+    );
+    await Thuoc.update(
+      { soHoKhau: a.dataValues.soHoKhau },
+      {
+        where: {
+          soCCCD: [...req.body.danhSachCCCDTachKhau, req.body.CCCDChuHoMoi],
+        },
+      }
+    );
+    res.json({ status: "success" });
   } catch (error) {
+    console.log(error);
     res.status(400);
     res.json({
-      status: error.errors[0].message,
+      status: false,
     });
   }
 });
