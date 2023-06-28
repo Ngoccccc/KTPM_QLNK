@@ -2,6 +2,7 @@ const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
 const NhanKhau = require("./NhanKhau");
+
 const User = conn.define(
   "User",
   {
@@ -11,11 +12,15 @@ const User = conn.define(
       autoIncrement: true,
     },
     soCCCD: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
       validate: {
         notEmpty: true,
+      },
+      references: {
+        model: NhanKhau,
+        key: "soCCCD",
       },
     },
     username: {

@@ -10,6 +10,7 @@ const ChuHo = conn.define(
     soHoKhau: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       references: {
         model: SoHoKhau,
         key: "soHoKhau",
@@ -19,6 +20,7 @@ const ChuHo = conn.define(
     soCCCD: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      unique: true,
       references: {
         model: NhanKhau,
         key: "soCCCD",
