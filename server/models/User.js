@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
+const NhanKhau = require("./NhanKhau");
 const User = conn.define(
   "User",
   {
@@ -43,7 +44,11 @@ const User = conn.define(
     // timestamps: false,
   }
 );
-
+User.belongsTo(NhanKhau, {
+  foreignKey: "soCCCD",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 conn
   .sync()
   .then(() => {

@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
+
 const NhanKhau = conn.define(
   "NhanKhau",
   {

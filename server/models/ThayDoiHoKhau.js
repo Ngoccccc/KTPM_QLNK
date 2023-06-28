@@ -33,7 +33,11 @@ const ThayDoiHoKhau = conn.define(
     tableName: "thaydoihokhau",
   }
 );
-
+ThayDoiHoKhau.belongsTo(SoHoKhau, {
+  foreignKey: "soHoKhau",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 conn
   .sync()
   .then(() => {

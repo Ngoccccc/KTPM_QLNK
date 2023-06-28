@@ -30,6 +30,16 @@ const HoThamGia = conn.define(
     tableName: "hothamgia",
   }
 );
+HoThamGia.belongsTo(SoHoKhau, {
+  foreignKey: "soHoKhau",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+HoThamGia.belongsTo(HopToDanPho, {
+  foreignKey: "id",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 
 conn
   .sync()

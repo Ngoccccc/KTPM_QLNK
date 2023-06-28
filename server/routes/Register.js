@@ -19,6 +19,7 @@ router.post("/register", function (req, res, next) {
         status: "success",
       });
     } catch (error) {
+      console.log(error)
       res.send({
         status: "false",
       });

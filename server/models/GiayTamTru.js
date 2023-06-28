@@ -50,7 +50,16 @@ const GiayTamTru = conn.define(
     tableName: "giaytamtru",
   }
 );
-
+GiayTamTru.belongsTo(NhanKhau, {
+  foreignKey: "soCCCD",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+GiayTamTru.belongsTo(SoHoKhau, {
+  foreignKey: "hoKhauTamTru",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 conn
   .sync()
   .then(() => {

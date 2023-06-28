@@ -48,6 +48,16 @@ const GiayTamVang = conn.define(
     tableName: "giaytamvang",
   }
 );
+GiayTamVang.belongsTo(NhanKhau, {
+  foreignKey: "soCCCD",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+GiayTamVang.belongsTo(SoHoKhau, {
+  foreignKey: "hoKhauTamVang",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 
 conn
   .sync()

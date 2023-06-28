@@ -30,6 +30,11 @@ const ThayDoiNhanKhau = conn.define(
     tableName: "thaydoinhankhau",
   }
 );
+ThayDoiNhanKhau.belongsTo(NhanKhau, {
+  foreignKey: "soCCCD",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 
 conn
   .sync()

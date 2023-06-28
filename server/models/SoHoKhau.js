@@ -43,5 +43,11 @@ conn
   .catch((error) => {
     console.error("Unable to create table : ", error);
   });
-
+// SoHoKhau.create({
+//   soHoKhau: 2,
+//   soNha: 37,
+//   duongPho: "LacTung",
+//   phuong: "VinhTuy",
+//   quan: "HaiBaTrung",
+// });
 module.exports = SoHoKhau;

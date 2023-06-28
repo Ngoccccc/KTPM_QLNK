@@ -26,7 +26,16 @@ const Thuoc = conn.define(
     tableName: "thuoc",
   }
 );
-
+Thuoc.belongsTo(SoHoKhau, {
+  foreignKey: "soHoKhau",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+Thuoc.belongsTo(NhanKhau, {
+  foreignKey: "soCCCD",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 conn
   .sync()
   .then(() => {

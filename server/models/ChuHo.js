@@ -30,7 +30,16 @@ const ChuHo = conn.define(
     tableName: "chuho",
   }
 );
-
+ChuHo.belongsTo(SoHoKhau, {
+  foreignKey: "soHoKhau",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+ChuHo.belongsTo(NhanKhau, {
+  foreignKey: "soCCCD",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
 conn
   .sync()
   .then(() => {
