@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import React, { useState } from "react";
 import './App.css';
-import { Login } from './containers/Login/Login';
-import { Register } from './containers/Login/Register';
-import { ForgotPassword } from './containers/Login/ForgotPassword';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import SignupPage from './pages/SignUp';
+import LoginPage from './pages/Login';
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('login');
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-
   return (
-    <div className="App">
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : 
-        ( currentForm === "register" ? <Register onFormSwitch={toggleForm} /> : <ForgotPassword onFormSwitch={toggleForm} /> )
-      }
+    <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-md w-full space-y-8">
+     <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<LoginPage/>} />
+            <Route path="/signup" element={<SignupPage/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
+  </div>
   );
 }
 
