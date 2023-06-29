@@ -3,12 +3,13 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const conn = require("./models/connectDB");
-const createModel = require("./models/createModel");
+// const createModel = require("./models/createModel");
 // // connect to database
 const register = require("./routes/Register");
 const login = require("./routes/Login");
 const hokhau = require("./routes/HoKhauApi");
 const nhankhau = require("./routes/NhanKhauApi");
+const hoptodanpho = require("./routes/HopDanPhoApi")
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,7 @@ app.use("/", register);
 app.use("/", login);
 app.use("/hokhau", hokhau);
 app.use("/nhankhau", nhankhau);
+app.use("/hoptodanpho", hoptodanpho);
 
 
 // catch 404 and forward to error handler
