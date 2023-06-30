@@ -22,7 +22,7 @@ export default function Login(){
 
     //Login API
     const authenticateUser = () =>{
-
+        
     }
 
     return(
@@ -48,7 +48,7 @@ export default function Login(){
         </div>
 
         <FormExtra/>
-        <FormAction handleSubmit={handleSubmit} text="Login"/>
+        <FormAction handleSubmit={handleSubmit} linkUrl ="/homepage" text="Login"/>
 
       </form>
     )

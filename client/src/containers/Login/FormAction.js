@@ -4,10 +4,11 @@ export default function FormAction({
     handleSubmit,
     type='Button',
     action='submit',
+    linkUrl="#",
     text
 }){
     return(
-        <>
+        <Link to={linkUrl}>
         {
             type==='Button' ?
             <button
@@ -21,6 +22,6 @@ export default function FormAction({
             :
             <></>
         }
-        </>
+        </Link>
     )
 }
