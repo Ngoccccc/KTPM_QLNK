@@ -10,7 +10,8 @@ var Thuoc = require("../models/Thuoc");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 var conn = require("../models/connectDB");
-const { QueryTypes, where } = require("sequelize");
+const { QueryTypes, where, Op } = require("sequelize");
+const sequelize = require("../models/connectDB");
 
 var router = express.Router();
 
@@ -147,6 +148,31 @@ router.get('/thongke/tamtrutamvang', async function (req, res, next) {
     var result_tamvang = await GiayTamVang.findAll({
     });
     res.json({"TamTru": result_tamtru, "TamVang": result_tamvang})
+  
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ error: "Internal Error" });
+  }
+});
+
+
+
+router.get('/thongke/dotuoi', async function (req, res, next) {
+  const maxAge = req.body.maxAge
+  const minAge = req.body.minAge
+  const currentDate = new Date();
+  const a = new Date(currentDate - maxAge * 365.25 * 24 * 60 * 60 * 1000)
+  const b = new Date(currentDate - minAge * 365.25 * 24 * 60 * 60 * 1000)
+  try {
+    var result = await NhanKhau.findAll({
+      where: {
+        ngayThangNamSinh: {
+          [Op.between]: [a, b],
+        },
+      },
+    });
+    
+    res.json(result)
   
   } catch (error) {
       console.error('Error:', error);
