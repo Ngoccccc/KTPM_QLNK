@@ -19,7 +19,7 @@ export default function Signup(){
     createAccount()
   }
 
-  //handle Signup API Integration here
+  //Signup API
   const createAccount=()=>{
 
   }

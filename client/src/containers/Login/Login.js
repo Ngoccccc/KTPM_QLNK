@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { loginFields } from "../formFields";
-import SignUpNavigate from "./SignUpNavigate";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
@@ -21,7 +20,7 @@ export default function Login(){
         authenticateUser();
     }
 
-    //Handle Login API Integration here
+    //Login API
     const authenticateUser = () =>{
 
     }

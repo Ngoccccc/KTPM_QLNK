@@ -1,13 +1,13 @@
 const loginFields=[
     {
-        labelText:"Email address",
-        labelFor:"email-address",
-        id:"email-address",
-        name:"email",
-        type:"email",
-        autoComplete:"email",
+        labelText:"So can cuoc cong dan",
+        labelFor:"cccd",
+        id:"cccd",
+        name:"cccd",
+        type:"text",
+        autoComplete:"cccd",
         isRequired:true,
-        placeholder:"Email address"   
+        placeholder:"So can cuoc cong dan"   
     },
     {
         labelText:"Password",
@@ -33,14 +33,14 @@ const signupFields=[
         placeholder:"Username"   
     },
     {
-        labelText:"Email address",
-        labelFor:"email-address",
-        id:"email-address",
-        name:"email",
-        type:"email",
-        autoComplete:"email",
+        labelText:"So can cuoc cong dan",
+        labelFor:"cccd",
+        id:"cccd",
+        name:"cccd",
+        type:"text",
+        autoComplete:"cccd",
         isRequired:true,
-        placeholder:"Email address"   
+        placeholder:"So can cuoc cong dan"   
     },
     {
         labelText:"Password",

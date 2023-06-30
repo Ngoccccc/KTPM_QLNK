@@ -11,7 +11,7 @@ export default function LoginPage(){
             <Login/>
             <SignUpNavigate
             paragraph="Don't have an account yet? "
-            linkName="Signup"
+            linkName="SignUp"
             linkUrl="/signup"
             />
         </>

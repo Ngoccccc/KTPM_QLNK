@@ -1,16 +1,19 @@
 import Header from "../containers/Login/Header";
 import Signup from "../containers/Login/SignUp";
+import SignUpNavigate from "../containers/Login/SignUpNavigate";
 
 export default function SignupPage(){
     return(
         <>
             <Header
-              heading="Signup to create an account"
-              paragraph="Already have an account? "
-              linkName="Login"
-              linkUrl="/"
+              heading="Sign up to create an account"
             />
             <Signup/>
+            <SignUpNavigate
+                paragraph="Already have an account?"
+                linkName="SignIn"
+                linkUrl="/"
+            />
         </>
     )
 }
