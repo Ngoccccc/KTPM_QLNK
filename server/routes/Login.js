@@ -18,12 +18,12 @@ router.post("/login", async function (req, res, next) {
         if (result) {
           res.json({ status: result });
         } else {
-          res.json({ status: "Sai ten dang nhap hoac mat khau" });
+          res.status(400).json({ status: "Sai ten dang nhap hoac mat khau" });
         }
       }
     );
   } catch (error) {
-    res.json({ status: "Sai ten dang nhap hoac mat khau" });
+    res.status(400).json({ status: "Sai ten dang nhap hoac mat khau", "error": error });
   }
 });
 

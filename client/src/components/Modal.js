@@ -94,7 +94,7 @@ const Modal = ({ modalProps }) => {
                         <DialogContent container sx={{ fontWeight: 'bold', paddingY: 0, paddingX: 2 }} >
                             {
                                 componentField.map((data, id) => (
-                                    <DialogContentText key={id} align="right" sx={{ fontWeight: 'bold', marginY: "15px" }}>{data.properties}:</DialogContentText>
+                                    <DialogContentText key={id} align="right" sx={{ fontWeight: 'bold', marginY: "15px" }}>{data.field}:</DialogContentText>
                                 ))
                             }
                         </DialogContent>
@@ -124,7 +124,7 @@ const Modal = ({ modalProps }) => {
                     <Button onClick={handleEdit}> <Edit />Sửa</Button>
                 )}
                 {
-                    ((xoaNhanKhau || canDelete) && newObj.quanHeVoiChuHo !== "Chủ hộ") && <Button style={{ color: "red" }} onClick={handleDeleteNhanKhau}><DeleteForever />Xóa</Button>
+                    ((xoaNhanKhau) && newObj.quanHeVoiChuHo !== "Chủ hộ") && <Button style={{ color: "red" }} onClick={handleDeleteNhanKhau}><DeleteForever />Xóa</Button>
                 }
                 <Button style={{ color: "orange" }} onClick={handleClose}><HighlightOff />Đóng tab</Button>
             </DialogActions>

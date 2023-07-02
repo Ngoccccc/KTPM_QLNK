@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import {
     Typography,
@@ -19,32 +19,45 @@ import AddNhanKhau from '../../components/AddNhanKhau'
 import Modal from '../../components/Modal'
 import SearchData from '../../components/SearchData'
 import HopToDanPho from './index';
-
+import { apiURL } from '../../utils/constant'
+import axios from 'axios'
 const HoKhauDetail = () => {
     const hopToDanPhoField = [
-        { field: 'Nội dung cuộc họp', properties: 'soHoKhau' },
-        { field: 'Địa điểm', properties: 'soNha' },
-        { field: 'Ngày diễn ra', properties: 'duongPho' },
-        { field: 'Thời gian bắt đầu', properties: 'phuong' },
-        { field: 'Thời gian kết thúc', properties: 'quan' }
+        { field: 'Nội dung cuộc họp', properties: 'noiDung' },
+        { field: 'Địa điểm họp', properties: 'diaDiem' },
+        { field: 'Thời gian bắt đầu', properties: 'thoiGianBatDau' },
+        { field: 'Thời gian kết thúc', properties: 'thoiGianKetThuc' },
     ]
 
-    const [openDetail, setOpenDetail] = useState(false);
-    const [selectTable, setSelectTable] = useState()
+    const ghiNhan = [
+        { field: 'Nội dung cuộc họp', properties: 'noiDung' },
+        { field: 'Hộ đã tham dự', properties: 'soHoKhau' },
+    ]
 
     const [openAddMember, setOpenAddMember] = useState(false);
-    const { soHoKhau } = useParams()
+    const { n } = useParams()
+    const num = parseInt(n)
+    console.log(typeof (num))
+    console.log(num)
 
+    const [listData, setListData] = useState([])
+    const [newData, setNewData] = useState([])
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await axios.get(`${apiURL}/hoptodanpho/xem`, { id: num });
+            setListData(data.data.hothamgia)
+            setNewData(data.data.hothamgia)
+        }
+        fetchData()
+    }, [])
     const tableProps = {
-        componentField: hopToDanPhoField,
-        dataTable: dataDetail.nhanKhau,
-        setOpenDetail,
-        setSelectTable,
-        soHoKhau
+        componentField: ghiNhan,
+        dataTable: listData,
+        num
     }
 
     const [editable, setEditable] = useState(false)
-    const [newData, setNewData] = useState(dataDetail.hoKhau)
+
 
     const handleEdit = () => {
         setEditable(true);
@@ -63,7 +76,6 @@ const HoKhauDetail = () => {
         });
     };
 
-    console.log(dataDetail)
     return (
         <div>
 

@@ -184,7 +184,7 @@ router.get('/thongke/gioitinh', async function (req, res, next) {
     var result_nu = await NhanKhau.findAll({
       where: { gioiTinh: 'Nữ' },
     });
-    res.json({ "Nam": result_nam, "Nữ": result_nu })
+    res.json({ "Nam": result_nam, "Nu": result_nu })
 
   } catch (error) {
     console.error('Error:', error);

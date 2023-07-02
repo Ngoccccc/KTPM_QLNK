@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TableContainer from '../../components/TableContainer';
 import SearchData from '../../components/SearchData';
 import {
@@ -9,10 +9,13 @@ import {
 import Modal from '../../components/Modal'
 import AddTamTru from '../../components/AddTamTru'
 import listData from '../../contants/DataTestTamTru';
+import axios from 'axios';
+import { apiURL } from '../../utils/constant';
+
 const TamVang = () => {
     const tamVangField = [
         { field: 'Địa chỉ thường trú', properties: 'diaChiThuongChu' },
-        { field: 'Hộ khẩu tạm vắng', properties: 'hoKhauTamTru' },
+        { field: 'Hộ khẩu tạm vắng', properties: 'hoKhauTamVang' },
         { field: 'Số chứng minh nhân dân', properties: 'soCCCD' },
         { field: 'Ngày bắt đầu tạm vắng', properties: 'ngayBatDau' },
         { field: 'Ngày kết thúc tạm vắng', properties: 'ngayKetThuc' },
@@ -22,6 +25,14 @@ const TamVang = () => {
     const [openDetail, setOpenDetail] = useState(false);
     const [selectTable, setSelectTable] = useState()
     const [searchTable, setSearchTable] = useState(listData)
+    const [changeUI, setChangeUI] = useState(false)
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`)
+            setSearchTable(data.data.TamVang)
+        }
+        fetchData()
+    }, [changeUI])
 
     const [openAddTamTru, setOpenAddTamTru] = useState(false)
     const searchProps = {
@@ -48,7 +59,9 @@ const TamVang = () => {
     const addProps = {
         openAddTamTru,
         setOpenAddTamTru,
-        componentField: tamVangField
+        componentField: tamVangField,
+        setChangeUI,
+        type: "tamVang"
     }
     return (
         <>

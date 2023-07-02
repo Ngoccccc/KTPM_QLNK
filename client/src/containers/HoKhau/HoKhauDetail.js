@@ -71,7 +71,7 @@ const HoKhauDetail = () => {
             const data = await axios.post(`${apiURL}/hokhau`, { soHoKhau: num })
             console.log(data)
             setListData(data.data)
-            setNewData(listData.hoKhau)
+            setNewData(data.data.hoKhau)
         }
         fetchData()
     }, [changeUI])
@@ -84,7 +84,12 @@ const HoKhauDetail = () => {
         setChangeUI
     }
 
-
+    const addProps = {
+        openAddMember,
+        setOpenAddMember,
+        soHoKhau: num,
+        setChangeUI
+    }
 
     const [editable, setEditable] = useState(false)
 
@@ -97,8 +102,7 @@ const HoKhauDetail = () => {
         setEditable(false);
         console.log(listData)
         const fetchData = async () => {
-            const data = await axios.post(`${apiURL}/hokhau/tachhokhau`,)
-            tableProps.setChangeUI(pre => !pre)
+            const data = await axios.post(`${apiURL}/hokhau/suathongtin`, newData)
             console.log(data)
         }
         fetchData()
@@ -156,7 +160,7 @@ const HoKhauDetail = () => {
                     Thêm nhân khẩu mới</Button>
 
             </Grid>
-            <AddNhanKhau openAddMember={openAddMember} setOpenAddMember={setOpenAddMember} />
+            <AddNhanKhau addProps={addProps} />
             <TableTachKhau tableProps={tableProps} />
             <NhanKhauModal openDetail={openDetail} setOpenDetail={setOpenDetail} data={selectTable} xoaNhanKhau={true} />
         </div>

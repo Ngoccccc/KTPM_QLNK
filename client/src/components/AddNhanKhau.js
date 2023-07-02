@@ -14,11 +14,16 @@ import {
     InputLabel,
     Select, MenuItem
 } from "@mui/material";
-const AddNhanKhau = ({ openAddMember, setOpenAddMember }) => {
+import axios from "axios"
+import { apiURL } from '../utils/constant';
+
+const AddNhanKhau = ({ addProps }) => {
     const nhanKhauField = ["Họ và tên", "Số chứng minh nhân dân", "Ngày cấp", "Nơi cấp", "Bí danh", "Giới tính", "Ngày Tháng Năm sinh",
         "Nơi sinh", "Nguyên quán", "Dân tộc", "Quốc tịch", "Nghề nghiệp", "Nơi làm việc", "Quan hệ với chủ hộ"]
     const nhanKhauFieldData = ["hoTen", "soCCCD", "ngayCap", "noiCap", "biDanh", "gioiTinh", "ngayThangNamSinh",
         "noiSinh", "nguyenQuan", "danToc", "quocTich", "ngheNghiep", "noiLamViec", "quanHeVoiChuHo"]
+
+    const { openAddMember, setOpenAddMember, soHoKhau, setChangeUI } = addProps
     const handleClose = () => {
         setOpenAddMember(false);
     }
@@ -35,7 +40,11 @@ const AddNhanKhau = ({ openAddMember, setOpenAddMember }) => {
 
     const handleSubmit = () => {
         setOpenAddMember(false);
-        console.log(formInfo)
+        const fetchData = async () => {
+            const data = await axios.post(`${apiURL}/hokhau/themnguoi`, { nhanKhau: formInfo, soHoKhau })
+            setChangeUI(pre => !pre)
+        }
+        fetchData()
         setFormInfo({})
     }
 

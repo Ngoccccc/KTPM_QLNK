@@ -11,10 +11,14 @@ import {
     Typography,
     TextField,
 } from "@mui/material";
+import axios from 'axios';
+import { apiURL } from '../utils/constant';
 const AddNhanKhau = ({ addProps }) => {
     const { openAddTamTru,
         setOpenAddTamTru,
-        componentField: tamTruField } = addProps;
+        componentField: componentField,
+        setChangeUI,
+        type } = addProps;
 
     const handleClose = () => {
         setOpenAddTamTru(false);
@@ -31,6 +35,19 @@ const AddNhanKhau = ({ addProps }) => {
 
     const handleSubmit = () => {
         setOpenAddTamTru(false);
+        const fetchData = async () => {
+            if (type === "hopToDanPho") {
+                const data = await axios.post(`${apiURL}/hoptodanpho/tao`, formInfo)
+            }
+            else if (type === "tamTru") {
+                const data = await axios.post(`${apiURL}/nhankhau/tamtru`, formInfo)
+            }
+            else if (type === "tamVang") {
+                const data = await axios.post(`${apiURL}/nhankhau/tamvang`, formInfo)
+            }
+            setChangeUI(pre => !pre)
+        }
+        fetchData()
         console.log(formInfo)
         setFormInfo({})
     }
@@ -52,15 +69,16 @@ const AddNhanKhau = ({ addProps }) => {
                     >
                         <DialogContent container sx={{ fontWeight: 'bold', paddingY: 0, paddingX: 2 }} >
                             {
-                                tamTruField.map((data, id) => (
+                                componentField.map((data, id) => (
                                     <DialogContentText key={id} align="right" sx={{ fontWeight: 'bold', marginY: "15px" }}>{data.field}:</DialogContentText>
                                 ))
                             }
                         </DialogContent>
                         <DialogContent sx={{ paddingY: '7px' }}>
-                            {tamTruField.map((data, id) => (
+                            {componentField.map((data, id) => (
                                 <TextField
                                     multiline
+                                    type="datetime-local"
                                     id={data.properties}
                                     onChange={onChange}
                                 />
