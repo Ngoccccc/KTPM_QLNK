@@ -1,6 +1,6 @@
-import Header from "../components/Header";
-import Signup from "../components/SignUp";
-import SignUpNavigate from "../components/SignUpNavigate";
+import Header from "../containers/Login/Header";
+import Signup from "../containers/Login/SignUp";
+import SignUpNavigate from "../containers/Login/SignUpNavigate";
 
 export default function SignupPage(){
     return(
