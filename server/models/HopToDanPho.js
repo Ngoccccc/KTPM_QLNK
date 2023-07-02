@@ -14,7 +14,15 @@ const HopToDanPho = conn.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    thoiGianKetThuc: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
     diaDiem: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    noiDung: {
       type: DataTypes.STRING,
       allowNull: false,
     },
