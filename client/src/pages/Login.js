@@ -1,6 +1,6 @@
-import Header from "../containers/Login/Header"
-import Login from "../containers/Login/Login"
-import SignUpNavigate from "../containers/Login/SignUpNavigate"
+import Header from "../components/Header"
+import Login from "../components/Login"
+import SignUpNavigate from "../components/SignUpNavigate"
 
 export default function LoginPage(){
     return(

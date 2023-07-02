@@ -1,38 +1,39 @@
 import { useState } from 'react';
-import { signupFields } from "../formFields"
+import { loginFields } from "../constants/formFields";
 import FormAction from "./FormAction";
+import FormExtra from "./FormExtra";
 import Input from "./Input";
 
-const fields=signupFields;
-let fieldsState={};
+const fields=loginFields;
+let fieldsState = {};
+fields.forEach(field=>fieldsState[field.id]='');
 
-fields.forEach(field => fieldsState[field.id]='');
+export default function Login(){
+    const [loginState,setLoginState]=useState(fieldsState);
 
-export default function Signup(){
-  const [signupState,setSignupState]=useState(fieldsState);
+    const handleChange=(e)=>{
+        setLoginState({...loginState,[e.target.id]:e.target.value})
+    }
 
-  const handleChange=(e)=>setSignupState({...signupState,[e.target.id]:e.target.value});
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        authenticateUser();
+    }
 
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    console.log(signupState)
-    createAccount()
-  }
-
-  //Signup API
-  const createAccount=()=>{
-
-  }
+    //Login API
+    const authenticateUser = () =>{
+        
+    }
 
     return(
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-        <div className="">
-        {
+        <div className="-space-y-px">
+            {
                 fields.map(field=>
                         <Input
                             key={field.id}
                             handleChange={handleChange}
-                            value={signupState[field.id]}
+                            value={loginState[field.id]}
                             labelText={field.labelText}
                             labelFor={field.labelFor}
                             id={field.id}
@@ -44,10 +45,10 @@ export default function Signup(){
                 
                 )
             }
-          <FormAction handleSubmit={handleSubmit} linkUrl="/homepage" text="Signup" />
         </div>
 
-         
+        <FormExtra/>
+        <FormAction handleSubmit={handleSubmit} linkUrl ="/homepage" text="Login"/>
 
       </form>
     )
