@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 var conn = require("../models/connectDB");
 const { QueryTypes, where, Op } = require("sequelize");
-const { QueryTypes, where, json } = require("sequelize");
+// const { QueryTypes, where, json } = require("sequelize");
 
 var router = express.Router();
 
