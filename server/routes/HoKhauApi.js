@@ -37,28 +37,9 @@ router.get("/", async function (req, res, next) {
     console.error('Error:', error);
     res.status(500).json({ error: "Internal Error" });  }
 });
-// router.get("/", async function (req, res, next) {
-//   try {
-//     var arr = [];
-//     var result = []
-//     // (await SoHoKhau.findAll()).forEach(function (item) {
-//     //   arr.push(item);
-//     // });
 
-//     var arr = await SoHoKhau.findAll();
 
-//     arr.forEach(function(item) {
-//       // Perform an action with item.soHoKhau
-//       var result_chuHo = ChuHo.findAll({
-//         where: { soHoKhau: item.soHoKhau },
-//       });
-//       item.push({"chuho": result_chuHo})
-//       tmp = json({"thong tin ho khau": item})
-//       result.push(tmp)
-//     });
-//     res.json(result);
-//   } catch (error) {}
-// });
+
 router.post("/", async function (req, res, next) {
   try {
     var result = await SoHoKhau.findOne({
@@ -89,6 +70,44 @@ router.post("/", async function (req, res, next) {
     res.json({ status: false });
   }
 });
+
+
+
+router.post('/suathongtin', async function (req, res, next) {
+  try {
+    
+    const fieldsToUpdate = Object.keys(SoHoKhau.rawAttributes).filter(
+      (field) => field !== "soHoKhau"
+    );
+
+    let dataToUpdate = {};
+    
+    for (const field of fieldsToUpdate) {
+      if (req.body[field] != null) {
+        dataToUpdate[field] = req.body[field];
+      }
+    }
+
+    await SoHoKhau.update(dataToUpdate,
+        {
+          where: {
+            soHoKhau: req.body.soHoKhau,
+          },
+        }
+      );
+    
+    result = await NhanKhau.findOne({
+      where: { soCCCD: req.body.soCCCD },
+    });
+      // Data added successfully
+      res.json(result);
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ error: "Internal Error" });
+  }
+  });
+  
+
 router.post("/themnguoi", async function (req, res, next) {
   try {
     await SoHoKhau.findOne({ where: { soHoKhau: req.body.soHoKhau } }).then(

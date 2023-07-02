@@ -94,7 +94,7 @@ router.post("/thaydoithongtin", async function (req, res, next) {
     result = await NhanKhau.findOne({
       where: { soCCCD: req.body.soCCCD },
     });
-    res.json({result})
+    res.json(result)
   } catch (error) {
       console.error('Error:', error);
     res.status(500).json({ error: "Internal Error" });
@@ -223,7 +223,7 @@ router.get('/thongke/dotuoi', async function (req, res, next) {
       },
     });
     
-    res.json(result.length)
+    res.json(result)
   
   } catch (error) {
       console.error('Error:', error);
