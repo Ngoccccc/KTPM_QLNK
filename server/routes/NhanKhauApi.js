@@ -149,7 +149,7 @@ router.post('/tamvang', async function (req, res, next) {
   try {
       // Extract data from the request body
       const diaChiThuongChu = req.body.diaChiThuongChu;
-      const hoKhauTamVang = req.body.hoKhauTamVang;
+      // const hoKhauTamVang = req.body.hoKhauTamVang;
       const soCCCD = req.body.soCCCD;
       const ngayBatDau = req.body.ngayBatDau;
       const ngayKetThuc = req.body.ngayKetThuc;
@@ -159,7 +159,7 @@ router.post('/tamvang', async function (req, res, next) {
       // Create a new instance of GiayTamVang
       const giayTamVang = await GiayTamVang.create({
       diaChiThuongChu,
-      hoKhauTamVang,
+      // hoKhauTamVang,
       soCCCD,
       ngayBatDau,
       ngayKetThuc,
