@@ -123,6 +123,21 @@ ALTER TABLE `thaydoihokhau` ADD FOREIGN KEY (`soHoKhau`) REFERENCES `sohokhau` (
 
 -- fake data
 use db_ktpm;
+
+INSERT INTO User (id, username,soCCCD, password, role)
+VALUES
+  (1, 'truong@gmail.com',123456789, 'admin', 'admin'),
+  (2, 'thanh@gmail.com',987654320, 'pass1', 'user'),
+  (3, 'minh@gmail.com',123456780, 'pass2', 'user'),
+  (4, 'ngoc@gmail.com',987654327, 'pass3', 'user'),
+  (5, 'tuan@gmail.com',246813579, 'pass4', 'user'),
+  (6, 'quan@gmail.com',135792468, 'pass5', 'user'),
+  (7, 'nhat@gmail.com',246813578, 'pass6', 'user'),
+  (8, 'nghia@gmail.com',987654321, 'pass7', 'user'),
+  (9, 'tien@gmail.com',987654323, 'pass8', 'user'),
+  (10, 'dquan@gmail.com',246813570, 'pass9', 'user');
+  
+
 INSERT INTO nhankhau (
   soCCCD, hoTen, biDanh, gioiTinh, ngayThangNamSinh,
   noiSinh, nguyenQuan, danToc, quocTich, ngheNghiep,
