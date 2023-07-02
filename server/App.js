@@ -8,6 +8,8 @@ const conn = require("./models/connectDB");
 const register = require("./routes/Register");
 const login = require("./routes/Login");
 const hokhau = require("./routes/HoKhauApi");
+const nhankhau = require("./routes/NhanKhauApi");
+const hoptodanpho = require("./routes/HopDanPhoApi")
 
 const app = express();
 app.use(cors());
@@ -18,6 +20,9 @@ app.use(express.json());
 app.use("/", register);
 app.use("/", login);
 app.use("/hokhau", hokhau);
+app.use("/nhankhau", nhankhau);
+app.use("/hoptodanpho", hoptodanpho);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
