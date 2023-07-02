@@ -1,21 +1,39 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
+const NhanKhau = require("./NhanKhau");
 
-const ThayDoiNhanKhau = conn.define("ThayDoiNhanKhau", {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+const ThayDoiNhanKhau = conn.define(
+  "ThayDoiNhanKhau",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: true,
+      autoIncrement: true,
+    },
+    soCCCD: {
+      type: DataTypes.INTEGER,
+      unique: true,
+      allowNull: false,
+      references: {
+        model: NhanKhau,
+        key: "soCCCD",
+      },
+    },
+    loaiThayDoi: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  soCCCD: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  loaiThayDoi: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  {
+    tableName: "thaydoinhankhau",
+  }
+);
+ThayDoiNhanKhau.belongsTo(NhanKhau, {
+  foreignKey: "soCCCD",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
 });
 
 conn

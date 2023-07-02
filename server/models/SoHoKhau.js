@@ -1,33 +1,39 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const conn = require("./connectDB");
-const SoHoKhau = conn.define("SoHoKhau", {
-  soHoKhau: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+const SoHoKhau = conn.define(
+  "SoHoKhau",
+  {
+    soHoKhau: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      unique: true,
+      autoIncrement: true,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    soNha: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    duongPho: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phuong: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    quan: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-  soNha: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  duongPho: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  phuong: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  quan: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  ngayTao: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+  {
+    tableName: "sohokhau",
+  }
+);
 
 conn
   .sync()
@@ -37,5 +43,18 @@ conn
   .catch((error) => {
     console.error("Unable to create table : ", error);
   });
-
+// SoHoKhau.create({
+//   soHoKhau: 2,
+//   soNha: 37,
+//   duongPho: "LacTung",
+//   phuong: "VinhTuy",
+//   quan: "HaiBaTrung",
+// });
+// SoHoKhau.create({
+//   soHoKhau: 1,
+//   soNha: 52,
+//   duongPho: "CayDa",
+//   phuong: "CoLoa",
+//   quan: "DongAnh",
+// });
 module.exports = SoHoKhau;
