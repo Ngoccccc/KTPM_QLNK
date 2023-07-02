@@ -53,6 +53,57 @@ router.post("/doihokhau", async function (req, res, next) {
   }
 });
 
+
+router.post("/thaydoithongtin", async function (req, res, next) {
+
+  try {
+    // const fieldsToUpdate = [
+    //   "hoTen",
+    //   "biDanh",
+    //   "gioiTinh",
+    //   "ngayThangNamSinh",
+    //   "noiSinh",
+    //   "nguyenQuan",
+    //   "dantoc",
+    //   "quocTich",
+    //   "ngheNghiep",
+    //   "ngayCap",
+    //   "noiCap",
+    //   "quanHeVoiChuHo",
+    // ];
+
+    const fieldsToUpdate = Object.keys(NhanKhau.rawAttributes).filter(
+      (field) => field !== "soCCCD"
+    );
+
+    let dataToUpdate = {};
+
+    for (const field of fieldsToUpdate) {
+      if (req.body[field] != null) {
+        dataToUpdate[field] = req.body[field];
+      }
+    }
+
+    await NhanKhau.update(dataToUpdate,
+      {
+        where: {
+          soCCCD: req.body.soCCCD,
+        },
+      }
+    );
+
+    result = await NhanKhau.findOne({
+      where: { soCCCD: req.body.soCCCD },
+    });
+    res.json({ result })
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: "Internal Error" });
+  }
+});
+
+
+
 router.post('/tamtru', async function (req, res, next) {
   try {
     // Extract data from the request body
