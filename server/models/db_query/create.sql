@@ -129,60 +129,64 @@ INSERT INTO nhankhau (
   noiLamViec, ngayCap, noiCap, quanHeVoiChuHo, createdAt, updatedAt
 )
 VALUES
-  (123456789, 'Nguyen Van A', 'A', 'Nam', '1990-01-01',
-  'Hanoi', 'Hanoi', 'Kinh', 'Vietnamese', 'Engineer',
-  'ABC Company', '2020-01-01', 'Hanoi', 'Chu Ho', NOW(), NOW()),
-  (987654321, 'Nguyen Thi B', 'B', 'Nữ', '1995-05-05',
-  'Hanoi', 'Hanoi', 'Kinh', 'Vietnamese', 'Teacher',
-  'XYZ School', '2018-06-01', 'Hanoi', 'Con', NOW(), NOW()),
-  (555555555, 'Tran Van C', NULL, 'Nam', '1985-12-15',
-  'Hanoi', 'Hanoi', 'Kinh', 'Vietnamese', 'Doctor',
-  'Hospital X', '2010-03-10', 'Hanoi', 'Anh Em', NOW(), NOW()),
-  (111111111, 'Le Thi D', 'D', 'Nữ', '1992-08-20',
-  'Hanoi', 'Hanoi', 'Kinh', 'Vietnamese', 'Accountant',
-  'ABC Corporation', '2015-09-25', 'Hanoi', 'Con', NOW(), NOW()),
-  (1202011008,'Đào Xuân Minh','minh','Nam','2014-08-31 17:00:00','Hà Nội','Hà Nội','Kinh','Việt Nam','Sinh viên','Hà Nội','2020-06-27 13:44:20','Hà Nội','Chủ hộ','2023-07-02 10:56:29','2023-07-02 10:56:29'),
-  (999999999, 'Pham Van E', NULL, 'Nam', '1998-03-30',
-  'Hanoi', 'Hanoi', 'Kinh', 'Vietnamese', 'Student',
-  'University Y', '2019-12-05', 'Hanoi', 'Anh Em', NOW(), NOW());
+  (123456789, 'Nguyễn Quang Trường', 'Trường', 'Nam', '1990-01-01', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Kĩ sư CNTT', 'Công ty GMSoltion', '2015-01-01', 'Hà Nội', 'Chủ hộ'),
+  (987654320, 'Nguyễn Tuấn Thành', 'Thành', 'Nữ', '1995-02-02', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Giáo Viên', 'Đại học Bách Khoa Hà Nội', '2019-02-02', 'Hà Nội', 'Con'),
+  (123456780, 'Đào Xuân Minh', 'Minh', 'Nam', '1990-01-01', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Đầu bếp', 'Nhà Hàng Sơn Thiên', '2020-01-01', 'Hà Nội', 'Chủ hộ'),
+  (987654327, 'Trần Tiến Ngọc', 'Ngọc', 'Nữ', '1995-02-02', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Giáo viên', 'Trường Amsterdam', '2019-02-02', 'Hà Nội', 'Chu Ho'),
+  (246813579, 'Trần Minh Tuấn', 'Tuấn', 'Nam', '1985-03-03', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Y tá', 'Bệnh viện y Hà Nội', '2018-03-03', 'Hà Nội', 'Vợ'),
+  (135792468, 'Vũ Anh Quân', 'Quân', 'Nữ', '1992-04-04', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Học sinh', 'Trường THPT Sư phạm Hà Nội', '2021-04-04', 'Hà Nội', 'Con'),
+  (246813578, 'Phạm Quang Nhật', 'Nhật', 'Nam', '1988-05-05', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Nội trợ', 'Nhà', '2017-05-05', 'Hà Nội', 'Vợ'),
+  (987654321, 'Hoàng Như Nghĩa', 'Nghĩa', 'Nữ', '1997-06-06', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Học sinh', 'Trường Amsterdam', '2016-06-06', 'Hà Nội', 'Con'),
+  (987654323, 'Nguyễn Hùng Tiến', 'Tiến', 'Nữ', '1997-06-06', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Học sinh', 'Trường đại học Kinh tế quốc dân', '2016-06-06', 'Hà Nội', 'Con'),
+  (246813570, 'Hoàng Danh Quân', 'Quân', 'Nam', '1985-03-03', 'Hà Nội', 'Hà Nội', 'Kinh', 'Việt Nam', 'Bác sĩ', 'Bệnh viện Bạch Mai', '2018-03-03', 'Hà Nội', 'Vợ');
 
-INSERT INTO sohokhau (soHoKhau, soNha, duongPho, phuong, quan, createdAt, updatedAt)
+INSERT INTO SoHoKhau (soHoKhau, soNha, duongPho, phuong, quan, ngayTao)
 VALUES
-  (1, 37, 'LacTung', 'VinhTuy', 'HaiBaTrung', NOW(), NOW()),
-  (2, 52, 'CayDa', 'CoLoa', 'DongAnh', NOW(), NOW());
+  (1, 10, 'Trần Đại Nghĩa', 'Phường Đồng Tâm', 'Quận Hai Bà Trưng', '2022-01-01'),
+  (2, 20, 'Phạm Văn Đồng', 'Phường Cầu Giấy', 'Quận Cầu Giấy', '2022-02-02'),
+  (3, 30, 'Lê Đại Hành', 'Phường Bà Triệu', 'Quận Hai Bà Trưng', '2022-03-03');
 
-INSERT INTO thuoc (soHoKhau, soCCCD, createdAt, updatedAt)
+INSERT INTO thuoc (soHoKhau, soCCCD)
 VALUES
-  (1, 123456789, NOW(), NOW()),
-  (2, 987654321, NOW(), NOW()),
-  (1, 555555555, NOW(), NOW()),
-  (2, 111111111, NOW(), NOW()),
-  (2, 1202011008, NOW(), NOW()),
-  (1, 999999999, NOW(), NOW());
+  (1, 123456780),
+  (1, 246813578),
+  (1, 987654320),
+  (2, 123456789),
+  (2, 246813579),
+  (2, 135792468),
+  (3, 987654327),
+  (3, 987654321),
+  (3, 987654323),
+  (3, 246813570);
 
 INSERT INTO chuho (soHoKhau, soCCCD, createdAt, updatedAt)
 VALUES
-  (1,123456789,2023-07-02,2023-07-02),
-  (2,1202011008,2023-07-02,2023-07-02);
+  (1,123456780,2023-07-02,2023-07-02),
+  (2,123456789,2023-06-02,2023-06-02),
+  (3,987654327,2023-05-02.2023-05-02);
 
 INSERT INTO giaytamtru (diaChiThuongChu, hoKhauTamTru, soCCCD, ngayBatDau, ngayKetThuc, ngayDangKi, lyDoTamTru, createdAt, updatedAt)
 VALUES
-  ('123 ABC Street', 1, 123456789, '2023-07-01', '2023-07-15', '2023-06-30', 'Vacation', NOW(), NOW()),
-  ('456 XYZ Avenue', 2, 987654321, '2023-07-05', '2023-07-20', '2023-07-04', 'Business Trip', NOW(), NOW());
+  ('Hà Nội', 2, 123456789, '2023-07-01', '2023-07-15', '2023-06-30', 'Đi trị liệu', NOW(), NOW()),
+  ('Hà Nội', 3, 987654321, '2023-07-05', '2023-07-20', '2023-07-04', 'Thăm gia đình', NOW(), NOW()),
+  ('Hà Nội', 1, 246813579, '2023-03-03', '2023-04-03', '2023-03-03', 'Đi công tác', NOW(), NOW()),
+  ('Hà Nội', 2, 246813579, '2023-03-04', '2023-04-04', '2023-03-04', 'Chuyển nhà', NOW(), NOW());
 
 INSERT INTO giaytamvang (diaChiThuongChu, hoKhauTamVang, soCCCD, ngayBatDau, ngayKetThuc, ngayDangKi, lyDoTamVang, createdAt, updatedAt)
 VALUES
-  ('123 ABC Street', 1, 123456789, '2023-07-01', '2023-07-15', '2023-06-30', 'Traveling', NOW(), NOW()),
-  ('456 XYZ Avenue', 2, 987654321, '2023-07-05', '2023-07-20', '2023-07-04', 'Vacation', NOW(), NOW());
+  ('Hà Nội', 1, 123456789, '2023-07-01', '2023-07-15', '2023-06-30', 'Đi du lịch', NOW(), NOW()),
+  ('Hà Nội', 2, 987654321, '2023-07-05', '2023-07-20', '2023-07-04', 'Đi ăn cưới', NOW(), NOW()),
+  ('Hà Nội', 3, 246813579, '2023-03-03', '2023-04-03', '2023-03-03', 'Chạy deadline',NOW(), NOW()),
+  ('Hà Nội', 3, 987654327, '2023-03-08', '2023-04-09', '2023-03-08', 'Đi về quê', NOW(), NOW());
 
 
 INSERT INTO hoptodanpho (id,thoiGianBatDau, thoiGianKetThuc, diaDiem, noiDung, createdAt, updatedAt)
 VALUES
-  (1,'2023-07-01', '2023-07-01', 'Phuong A, Quan B', 'Noi dung hop to 1', NOW(), NOW()),
-  (2,'2023-07-02', '2023-07-02', 'Phuong C, Quan D', 'Noi dung hop to 2', NOW(), NOW()),
-  (3,'2023-07-03', '2023-07-03', 'Phuong E, Quan F', 'Noi dung hop to 3', NOW(), NOW()),
-  (4,'2023-07-04', '2023-07-04', 'Phuong G, Quan H', 'Noi dung hop to 4', NOW(), NOW()),
-  (5,'2023-07-05', '2023-07-05', 'Phuong I, Quan J', 'Noi dung hop to 5', NOW(), NOW());
+  (1,'2023-07-01', '2023-07-01', 'Phường Đồng Tâm , quận Hai Bà Trưng', 'Dẹp làn đường vỉa hè', NOW(), NOW()),
+  (2,'2023-07-02', '2023-07-02', 'Phường Bà Triệu , Quận Hai Bà Trưng', 'Chi phí thay đổi khu phố', NOW(), NOW()),
+  (3,'2023-07-03', '2023-07-03', 'Phường Đồng Tâm , quận Hai Bà Trưng', 'Kế hoạch đón tết', NOW(), NOW()),
+  (4,'2023-07-04', '2023-07-04', 'Phường Đồng Tâm , quận Hai Bà Trưng', 'Họp thường niên theo tháng', NOW(), NOW()),
+  (5,'2023-07-05', '2023-07-05', 'Phuong I, Quan J', 'Noi dung hop to 5', 'Tổ chức sinh nhật cho các cụ 80 tuổi trở lên', NOW(), NOW());
 
 
 INSERT INTO hothamgia (id, soHoKhau, createdAt, updatedAt)
@@ -191,4 +195,4 @@ VALUES
   (2, 2, NOW(), NOW()),
   (3, 1, NOW(), NOW()),
   (4, 2, NOW(), NOW()),
-  (5, 1, NOW(), NOW());
+  (5, 3, NOW(), NOW());
