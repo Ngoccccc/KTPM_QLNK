@@ -18,7 +18,6 @@ const HoThamGia = conn.define(
     },
     soHoKhau: {
       type: DataTypes.INTEGER,
-      unique: true,
       allowNull: false,
       references: {
         model: SoHoKhau,

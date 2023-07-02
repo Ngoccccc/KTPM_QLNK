@@ -2,9 +2,9 @@ const { Sequelize, DataTypes, Model } = require("sequelize");
 
 const db_name = "db_ktpm";
 const user_name = "root";
-const password = "";
+const password = "daominh";
 const db_config = {
-  port: 3307,
+  port: 3306,
   host: "localhost",
   dialect: "mysql",
 };

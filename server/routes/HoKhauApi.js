@@ -35,7 +35,7 @@ router.get("/", async function (req, res, next) {
 
     res.json(result);
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
@@ -99,7 +99,10 @@ router.post("/themnguoi", async function (req, res, next) {
           await ChuHo.findOne({ where: { soHoKhau: req.body.soHoKhau } }).then(
             async (result) => {
               if (result) {
-                if (req.body.nhanKhau.quanHeVoiChuHo != "Chủ hộ") {
+                if (
+                  req.body.nhanKhau.quanHeVoiChuHo != "Chủ hộ" ||
+                  req.body.nhanKhau.quanHeVoiChuHo != "Chu ho"
+                ) {
                   await NhanKhau.create(req.body.nhanKhau);
                   await Thuoc.create({
                     soHoKhau: req.body.soHoKhau,
