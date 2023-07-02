@@ -1,0 +1,11 @@
+.link {
+    color: inherit;
+    text-decoration: none;
+    font-size: '1.5rem';
+    /* Áp dụng các kiểu CSS khác tùy ý */
+  }
+
+a.link {
+  width: '200px';
+  height: '80px',
+}

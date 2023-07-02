@@ -1,0 +1,15 @@
+.MuiTableRow-root{
+  height: 80px;
+}
+
+.MuiInputBase-root{
+  width: 100%;
+  height: 35px;
+  margin: 2px 0px
+
+}
+.MuiDialogContent-root{
+  width: 100%;
+
+}
+
