@@ -96,8 +96,8 @@ router.post('/suathongtin', async function (req, res, next) {
         }
       );
     
-    result = await NhanKhau.findOne({
-      where: { soCCCD: req.body.soCCCD },
+    result = await SoHoKhau.findOne({
+      where: { soHoKhau: req.body.soHoKhau },
     });
       // Data added successfully
       res.json(result);
