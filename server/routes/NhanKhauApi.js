@@ -172,7 +172,7 @@ router.get('/thongke/dotuoi', async function (req, res, next) {
       },
     });
     
-    res.json(result)
+    res.json(result.length)
   
   } catch (error) {
       console.error('Error:', error);
