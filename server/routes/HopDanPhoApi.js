@@ -40,11 +40,13 @@ router.post('/tao', async function (req, res, next) {
     try {
         const thoiGianBatDau = req.body.thoiGianBatDau;
         const diaDiem = req.body.diaDiem;
+        const noiDung = req.body.noiDung;
     
         // Create a new instance of GiayTamTru
         const thongbao = await HopToDanPho.create({
             thoiGianBatDau,
-            diaDiem
+            diaDiem,
+            noiDung
         });
     
         // Data added successfully
