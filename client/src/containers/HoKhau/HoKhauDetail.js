@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import {
     Typography,
@@ -11,17 +11,18 @@ import {
     AddCircleOutline,
     Edit
 } from '@mui/icons-material'
-import { dataDetail } from '../../contants/DataTestHoKhau'
+
 import NhanKhauModal from '../../components/NhanKhauModal'
 import TableTachKhau from './../../components/TableTachKhau';
 import AddNhanKhau from '../../components/AddNhanKhau'
 import Modal from '../../components/Modal'
 
+import axios from 'axios'
+import { apiURL } from '../../utils/constant'
+
 const HoKhauDetail = () => {
     const hoKhauField = [
         { field: 'Số hộ khẩu', properties: 'soHoKhau' },
-        // { field: 'Họ và tên chủ hộ', properties: 'hoTen' },
-        // { field: 'Số căn cước chủ hộ', properties: 'soCCCD' },
         { field: 'Số nhà', properties: 'soNha' },
         { field: 'Đường phố', properties: 'duongPho' },
         { field: 'Phường', properties: 'phuong' },
@@ -52,30 +53,41 @@ const HoKhauDetail = () => {
         { field: 'Nơi làm việc', properties: 'noiLamViec' }
     ]
 
+    const [listData, setListData] = useState({
+        hoKhau: {}, nhanKhau: [],
+    })
+
+
     const [openDetail, setOpenDetail] = useState(false);
     const [selectTable, setSelectTable] = useState()
-
     const [openAddMember, setOpenAddMember] = useState(false);
+    const [changeUI, setChangeUI] = useState(false)
+    const [newData, setNewData] = useState({})
     const { soHoKhau } = useParams()
+    const num = parseInt(soHoKhau)
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await axios.post(`${apiURL}/hokhau`, { soHoKhau: num })
+            console.log(data)
+            setListData(data.data)
+            setNewData(listData.hoKhau)
+        }
+        fetchData()
+    }, [changeUI])
     const tableProps = {
         componentField: nhanKhauField,
-        dataTable: dataDetail.nhanKhau,
+        dataTable: listData.nhanKhau,
         setOpenDetail,
         setSelectTable,
-        soHoKhau
+        soHoKhau,
+        setChangeUI
     }
 
-    const modalProps = {
-        openDetail,
-        setOpenDetail,
-        data: selectTable,
-        componentField: moreNhanKhauField,
-        xoaNhanKhau: true
-    }
+
 
     const [editable, setEditable] = useState(false)
-    const [newData, setNewData] = useState(dataDetail.hoKhau)
+
 
     const handleEdit = () => {
         setEditable(true);
@@ -83,7 +95,14 @@ const HoKhauDetail = () => {
 
     const handleSave = () => {
         setEditable(false);
-        console.log(newData)
+        console.log(listData)
+        const fetchData = async () => {
+            const data = await axios.post(`${apiURL}/hokhau/tachhokhau`,)
+            tableProps.setChangeUI(pre => !pre)
+            console.log(data)
+        }
+        fetchData()
+        // setChangeUI(pre => !pre)
         // Save the edited newData
     };
 
@@ -92,9 +111,9 @@ const HoKhauDetail = () => {
             ...newData,
             [field]: event.target.value
         });
+
     };
 
-    console.log(dataDetail)
     return (
         <div>
 

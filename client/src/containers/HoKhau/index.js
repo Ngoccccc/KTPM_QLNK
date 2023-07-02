@@ -1,17 +1,31 @@
-import React, { useState } from 'react'
-import { listData } from '../../contants/DataTestHoKhau'
+import React, { useState, useEffect } from 'react'
+
 import SearchData from '../../components/SearchData'
 import TableHoKhau from './../../components/TableHoKhau';
+import { apiURL } from '../../utils/constant';
+import axios from 'axios';
+
 const HoKhau = () => {
     const hoKhauField = [
         { field: 'Số hộ khẩu', properties: 'soHoKhau' },
-        // { field: 'Họ và tên chủ hộ', properties: 'hoTen' },
-        // { field: 'Số căn cước chủ hộ', properties: 'soCCCD' },
+        { field: 'Họ và tên chủ hộ', properties: 'hoTen' },
+        { field: 'Số căn cước chủ hộ', properties: 'soCCCD' },
         { field: 'Số nhà', properties: 'soNha' },
         { field: 'Đường phố', properties: 'duongPho' },
         { field: 'Phường', properties: 'phuong' },
         { field: 'Quận', properties: 'quan' }
     ]
+
+    const [listData, setListData] = useState([])
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await axios.get(`${apiURL}/hokhau`)
+            setSearchTable(data.data)
+            setListData(data.data)
+        }
+        fetchData()
+    }, [])
+
 
     const [searchTable, setSearchTable] = useState(listData)
     const searchProps = {
@@ -23,6 +37,7 @@ const HoKhau = () => {
     const tableProps = {
         componentField: hoKhauField,
         searchTable,
+        path: "hokhau"
     }
 
     return (

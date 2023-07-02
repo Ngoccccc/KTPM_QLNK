@@ -28,6 +28,10 @@ import {
     AddCircleOutline as AddCircleOutlineIcon
 } from '@mui/icons-material';
 import './index.css'
+import axios from "axios"
+import { apiURL } from "../utils/constant";
+
+import removeVietnameseTones from '../contants/TiengViet';
 
 const TableTachKhau = ({ tableProps }) => {
     const [selectedTachHo, setSelectedTachHo] = useState([])
@@ -65,6 +69,13 @@ const TableTachKhau = ({ tableProps }) => {
         setConfirmAlert(false);
         setOpenBasicInfo(false);
         setShow(prev => !prev)
+        const fetchData = async () => {
+            const data = await axios.post(`${apiURL}/hokhau/tachhokhau`, reqData)
+            tableProps.setChangeUI(pre => !pre)
+            console.log(data)
+        }
+        fetchData()
+        tableProps.setChangeUI(pre => !pre)
         console.log(reqData);
         setSelectedTachHo([])
     };
@@ -150,7 +161,7 @@ const TableTachKhau = ({ tableProps }) => {
                                 <TableCell>
                                     <Checkbox
                                         color="primary"
-                                        disabled={data.quanHeVoiChuHo === "Chủ hộ"}
+                                        disabled={removeVietnameseTones(data.quanHeVoiChuHo.toString()).toLowerCase() === removeVietnameseTones("Chủ hộ").toLowerCase()}
                                         checked={selectedTachHo.includes(data.soCCCD)}
                                         onChange={() => handleChoiceMember(data.soCCCD)}
                                     />

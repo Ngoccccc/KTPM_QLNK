@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { listData } from '../../contants/DataTestHoKhau'
 import SearchData from '../../components/SearchData'
 import TableHoKhau from './../../components/TableHoKhau';
+import axios from 'axios'
 const HopToDanPho = () => {
     const hoKhauField = [
         { field: 'Số hộ khẩu', properties: 'soHoKhau' },
@@ -23,6 +24,7 @@ const HopToDanPho = () => {
     const tableProps = {
         componentField: hoKhauField,
         searchTable,
+        path: "hoptodanpho"
     }
 
     return (

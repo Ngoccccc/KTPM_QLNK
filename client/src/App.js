@@ -14,6 +14,7 @@ import TamTru from './containers/TamTru';
 import ThongKe from './containers/ThongKe';
 import TamVang from './containers/TamVang';
 import HoKhauDetail from './containers/HoKhau/HoKhauDetail';
+import HopToDanPhoDetail from './containers/HopToDanPho/HopToDanPhoDetail'
 function App() {
   return (
 
@@ -27,7 +28,10 @@ function App() {
           </Route>
           <Route path="/tamtru" element={<TamTru />} />
           <Route path="/tamvang" element={<TamVang />} />
-          <Route path="/hoptodanpho" element={<HopToDanPho />} />
+          <Route path="/hoptodanpho">
+            <Route index element={<HopToDanPho />} />
+            <Route path=":id" element={<HopToDanPhoDetail />} />
+          </Route>
           <Route path="/thongke" element={<ThongKe />} />
         </Route>
       </Routes>

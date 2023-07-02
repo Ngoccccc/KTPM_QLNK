@@ -20,7 +20,10 @@ import {
     HighlightOff,
     DeleteForever
 } from "@mui/icons-material";
-const NhanKhauModal = ({ openDetail, setOpenDetail, data, xoaNhanKhau }) => {
+
+import axios from "axios"
+import { apiURL } from "../utils/constant";
+const NhanKhauModal = ({ openDetail, setOpenDetail, data, xoaNhanKhau, setChangeUI }) => {
     const nhanKhauField = ["Họ và tên", "Số chứng minh nhân dân", "Ngày cấp", "Nơi cấp", "Bí danh", "Giới tính", "Ngày Tháng Năm sinh",
         "Nơi sinh", "Nguyên quán", "Dân tộc", "Quốc tịch", "Nghề nghiệp", "Nơi làm việc"]
     const nhanKhauFieldData = ["hoTen", "soCCCD", "ngayCap", "noiCap", "biDanh", "gioiTinh", "ngayThangNamSinh",
@@ -39,8 +42,6 @@ const NhanKhauModal = ({ openDetail, setOpenDetail, data, xoaNhanKhau }) => {
     const [editable, setEditable] = useState(false);
     const [newData, setNewData] = useState(newObj);
 
-
-
     const handleEdit = () => {
         setEditable(true);
         setNewData(newData.hoTen ? newData : newObj)
@@ -49,6 +50,12 @@ const NhanKhauModal = ({ openDetail, setOpenDetail, data, xoaNhanKhau }) => {
     const handleSave = () => {
         setEditable(false);
         console.log(newData)
+        const fetchData = async () => {
+            const data = await axios.post(`${apiURL}/nhankhau/thaydoithongtin`, newData)
+            setChangeUI(pre => !pre)
+            console.log(data)
+        }
+        fetchData()
         // Save the edited newData
     };
     const handleClose = () => {
