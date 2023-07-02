@@ -14,12 +14,14 @@ import TamTru from './containers/TamTru';
 import ThongKe from './containers/ThongKe';
 import TamVang from './containers/TamVang';
 import HoKhauDetail from './containers/HoKhau/HoKhauDetail';
+import Login from './containers/Login';
 import HopToDanPhoDetail from './containers/HopToDanPho/HopToDanPhoDetail'
 function App() {
   return (
 
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />} >
           <Route path="/nhankhau" element={<NhanKhau />} />
           <Route path="/hokhau"  >

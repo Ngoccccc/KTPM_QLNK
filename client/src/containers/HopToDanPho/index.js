@@ -1,28 +1,52 @@
-import React, { useState } from 'react'
-import { listData } from '../../contants/DataTestHoKhau'
+import React, { useState, useEffect } from 'react'
+import {
+    Typography,
+    Grid,
+    Button
+} from '@mui/material'
 import SearchData from '../../components/SearchData'
 import TableHoKhau from './../../components/TableHoKhau';
+import AddTamTru from './../../components/AddTamTru'
 import axios from 'axios'
+import { apiURL } from '../../utils/constant';
 const HopToDanPho = () => {
-    const hoKhauField = [
-        { field: 'Số hộ khẩu', properties: 'soHoKhau' },
-        // { field: 'Họ và tên chủ hộ', properties: 'hoTen' },
-        // { field: 'Số căn cước chủ hộ', properties: 'soCCCD' },
-        { field: 'Số nhà', properties: 'soNha' },
-        { field: 'Đường phố', properties: 'duongPho' },
-        { field: 'Phường', properties: 'phuong' },
-        { field: 'Quận', properties: 'quan' }
+    const hopToDanPhoField = [
+        { field: 'Nội dung cuộc họp', properties: 'noiDung' },
+        { field: 'Địa điểm họp', properties: 'diaDiem' },
+        { field: 'Thời gian bắt đầu', properties: 'thoiGianBatDau' },
+        { field: 'Thời gian kết thúc', properties: 'thoiGianKetThuc' },
     ]
 
-    const [searchTable, setSearchTable] = useState(listData)
+    const [listData, setListData] = useState([])
+    const [searchTable, setSearchTable] = useState([])
+    const [changeUI, setChangeUI] = useState(false)
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await axios.get(`${apiURL}/hoptodanpho`)
+            console.log(data)
+            setSearchTable(data.data)
+            setListData(data.data)
+        }
+        fetchData()
+    }, [changeUI])
+
+    const [openAddTamTru, setOpenAddTamTru] = useState(false)
+
+    const addProps = {
+        openAddTamTru,
+        setOpenAddTamTru,
+        componentField: hopToDanPhoField,
+        setChangeUI,
+        type: "hopToDanPho"
+    }
     const searchProps = {
         listData,
         setSearchTable,
-        componentSearch: hoKhauField
+        componentSearch: hopToDanPhoField
     }
 
     const tableProps = {
-        componentField: hoKhauField,
+        componentField: hopToDanPhoField,
         searchTable,
         path: "hoptodanpho"
     }
@@ -30,6 +54,12 @@ const HopToDanPho = () => {
     return (
         <div>
             <SearchData searchProps={searchProps} />
+            <Grid container
+                justifyContent="space-between">
+                <Typography>Thông tin cuộc họp</Typography>
+                <Button onClick={() => setOpenAddTamTru(true)}>Tạo cuộc họp mới</Button>
+            </Grid>
+            <AddTamTru addProps={addProps} />
             <TableHoKhau tableProps={tableProps} />
         </div>
     )

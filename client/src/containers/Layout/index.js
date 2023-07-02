@@ -31,7 +31,8 @@ import {
 
 import { Outlet, Link } from 'react-router-dom'
 import './style.css'
-
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/base';
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -84,6 +85,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
+  const navigate = useNavigate()
   const sidebarItems = [
     { id: 'item1', text: 'Nhân khẩu', path: "/nhankhau", icon: <PersonIcon /> },
     { id: 'item2', text: 'Hộ khẩu', path: "/hokhau", icon: <GroupsIcon /> },
@@ -104,6 +106,10 @@ export default function Dashboard() {
     setOpen(!open);
   };
 
+  const handleLogout = () => {
+    console.log('test')
+    navigate("/login")
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -135,7 +141,7 @@ export default function Dashboard() {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
+            {/* <Button color="inherit" onClick={handleLogout}>
               <Typography
 
                 variant="h6"
@@ -143,6 +149,14 @@ export default function Dashboard() {
                 noWrap
                 sx={{ paddingRight: 2, flexGrow: 1 }}
               >
+
+
+
+              <LogoutIcon />
+              Đăng xuất
+            </Button> */}
+            <IconButton color="inherit" onClick={handleLogout}>
+              <Typography variant="h6" color="inherit" noWrap sx={{ paddingRight: 2, flexGrow: 1 }}>
                 Đăng xuất
               </Typography>
               <LogoutIcon />

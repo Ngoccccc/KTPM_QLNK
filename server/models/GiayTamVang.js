@@ -11,7 +11,7 @@ const GiayTamVang = conn.define(
     },
     hoKhauTamVang: {
       type: DataTypes.INTEGER,
-      unique: true,
+      unique: false,
       allowNull: false,
       references: {
         model: SoHoKhau,

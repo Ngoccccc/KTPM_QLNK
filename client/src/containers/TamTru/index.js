@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TableContainer from '../../components/TableContainer';
 import SearchData from '../../components/SearchData';
 import {
@@ -9,6 +9,8 @@ import {
 import Modal from '../../components/Modal'
 import AddTamTru from '../../components/AddTamTru'
 import listData from '../../contants/DataTestTamTru';
+import axios from 'axios';
+import { apiURL } from '../../utils/constant';
 const TamTru = () => {
     const tamTruField = [
         { field: 'Địa chỉ thường trú', properties: 'diaChiThuongChu' },
@@ -22,6 +24,14 @@ const TamTru = () => {
     const [openDetail, setOpenDetail] = useState(false);
     const [selectTable, setSelectTable] = useState()
     const [searchTable, setSearchTable] = useState(listData)
+    const [changeUI, setChangeUI] = useState(false)
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`)
+            setSearchTable(data.data.TamTru)
+        }
+        fetchData()
+    }, [changeUI])
 
     const [openAddTamTru, setOpenAddTamTru] = useState(false)
     const searchProps = {
@@ -48,7 +58,9 @@ const TamTru = () => {
     const addProps = {
         openAddTamTru,
         setOpenAddTamTru,
-        componentField: tamTruField
+        componentField: tamTruField,
+        setChangeUI,
+        type: "tamTru"
     }
     return (
         <>

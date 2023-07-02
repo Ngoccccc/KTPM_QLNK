@@ -25,6 +25,7 @@ const NhanKhau = () => {
     const nhanKhauField = [
         { field: 'Họ và tên', properties: 'hoTen' },
         { field: 'Số chứng minh nhân dân', properties: 'soCCCD' },
+        { field: 'Giới tính', properties: 'gioiTinh' },
         { field: 'Nơi ở', properties: 'nguyenQuan' },
         { field: 'Nghề nghiệp', properties: 'ngheNghiep' }
     ]
