@@ -1,25 +1,22 @@
-const { Sequelize, DataTypes, Model } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 const conn = require("./connectDB");
-const User = conn.define("User", {
-  id: {
+
+const ThayDoiHoKhau = conn.define("ThayDoiHoKhau", {
+  soHoKhau: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    allowNull: false,
   },
-  soCCCD: {
+  loaiThayDoi: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  username: {
-    type: DataTypes.STRING,
+  ngayThayDoi: {
+    type: DataTypes.DATE,
     allowNull: false,
   },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  role: {
+  chiTietThayDoi: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -28,10 +25,10 @@ const User = conn.define("User", {
 conn
   .sync()
   .then(() => {
-    console.log("User table created successfully!");
+    console.log("ThayDoiHoKhau table created successfully!");
   })
   .catch((error) => {
     console.error("Unable to create table : ", error);
   });
 
-module.exports = User;
+module.exports = ThayDoiHoKhau;
