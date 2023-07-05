@@ -44,9 +44,15 @@ const HoKhauDetail = () => {
     const [newData, setNewData] = useState([])
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/hoptodanpho/xem`, { id: num });
-            setListData(data.data.hothamgia)
-            setNewData(data.data.hothamgia)
+            try {
+                const data = await axios.get(`${apiURL}/hoptodanpho/xem`, { id: num });
+                setListData(data.data.hothamgia)
+                setNewData(data.data.hothamgia)
+            }
+            catch (err) {
+                console.log(err)
+            }
+
         }
         fetchData()
     }, [])

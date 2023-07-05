@@ -3,39 +3,29 @@ import {
     Typography,
     Grid,
     Paper,
+    TextField,
+    Button
 } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import axios from "axios";
 import { apiURL } from "../../utils/constant";
 
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
 
 const ThongKe = () => {
     const [listGioiTinh, setListGioiTinh] = useState({});
     const [listDoTuoi, setListDoTuoi] = useState([]);
     const [listTrangThai, setListTrangThai] = useState({});
+    const [khoangTuoi, setKhoangTuoi] = useState({
+        minAge: 0,
+        maxAge: 100
+    })
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await axios.get(`${apiURL}/nhankhau/thongke/gioitinh`);
             setListGioiTinh(data.data);
             console.log(listGioiTinh);
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/nhankhau/thongke/dotuoi`, { minAge: 0, maxAge: 60 });
-            setListDoTuoi(data.data);
-            console.log(listDoTuoi);
         };
         fetchData();
     }, []);
@@ -49,44 +39,79 @@ const ThongKe = () => {
         fetchData();
     }, []);
 
-    console.log({ listTrangThai, listDoTuoi, listGioiTinh })
+    const handleGetAge = () => {
+        const fetchData = async () => {
+            const data = await axios.get(`${apiURL}/nhankhau/thongke/dotuoi`, { khoangTuoi });
+            setListDoTuoi(data.data);
+            console.log(khoangTuoi);
+        };
+        fetchData()
+    }
+
+    const onChange = (e) => {
+        setKhoangTuoi({
+            ...khoangTuoi,
+            [e.target.id]: parseInt([e.target.value][0])
+        })
+    }
     return (
         <>
             <div>Thống kê nhân khẩu</div>
-            <Typography mb-8>Thống kê giới tính: </Typography>
-            <Grid container item >
+            <Typography>Thống kê giới tính: </Typography>
+            <Grid container >
                 <Grid >
-                    <Item>
+                    <Typography>
                         Nam : {!listGioiTinh.Nam?.length ? "loading" : listGioiTinh.Nam.length}
                         {/* Chiếm: {!listGioiTinh ? "loading" : (listGioiTinh.Nam.length / (listGioiTinh.Nam.length + listGioiTinh.Nu.length)) * 100}%{" "} */}
-                    </Item>
+                    </Typography>
                 </Grid>
-                <Grid>
-                    <Item>
+                <Grid >
+                    <Typography>
                         Nữ : {!listGioiTinh.Nu?.length ? "loading" : listGioiTinh.Nu.length}
                         {/* Chiếm: {!listGioiTinh ? "loading" : (listGioiTinh.Nu.length / (listGioiTinh.Nam.length + listGioiTinh.Nu.length)) * 100}%{" "} */}
-                    </Item>
+                    </Typography>
                 </Grid>
             </Grid>
+            <Typography sx={{ marginY: 1 }}>Thống kê độ tuổi: </Typography>
+            <Grid
+                container
+                direction="row"
+            >
+                <Typography sx={{ margin: 1 }}>Độ tuổi từ : </Typography>
+                <TextField
+                    sx={{ width: 60 }}
+                    id="minAge"
+                    type="number"
+                    onChange={onChange}
+                />
+                <Typography sx={{ margin: 1 }}>Đến : </Typography>
+                <TextField
+                    sx={{ width: 60 }}
+                    id="maxAge"
+                    type="number"
+                    onChange={onChange}
+                />
+                <Button sx={{ marginX: 2 }} onClick={handleGetAge}>Truy vấn </Button>
 
-            <Typography mb-8>Thống kê độ tuổi: </Typography>
-            <Grid container item >
-                <Item>
+            </Grid>
+
+            <Grid container >
+                <Typography>
                     Số người trong độ tuổi yêu cầu là : {!listDoTuoi?.length ? "loading" : listDoTuoi.length}
-                </Item>
+                </Typography>
             </Grid>
 
-            <Typography mb-8>Thống kê tạm trú , tạm vắng: </Typography>
-            <Grid container item >
+            <Typography>Thống kê tạm trú , tạm vắng: </Typography>
+            <Grid container >
                 <Grid >
-                    <Item>
+                    <Typography>
                         Số đơn tạm trú : {!listTrangThai.TamTru?.length ? "loading" : listTrangThai.TamTru.length}
-                    </Item>
+                    </Typography>
                 </Grid>
-                <Grid>
-                    <Item>
+                <Grid >
+                    <Typography>
                         Số đơn tạm vắng : {!listTrangThai.TamVang?.length ? "loading" : listTrangThai.TamVang.length}
-                    </Item>
+                    </Typography>
                 </Grid>
             </Grid>
         </>

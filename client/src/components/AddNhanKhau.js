@@ -41,8 +41,14 @@ const AddNhanKhau = ({ addProps }) => {
     const handleSubmit = () => {
         setOpenAddMember(false);
         const fetchData = async () => {
-            const data = await axios.post(`${apiURL}/hokhau/themnguoi`, { nhanKhau: formInfo, soHoKhau })
-            setChangeUI(pre => !pre)
+            try {
+                const data = await axios.post(`${apiURL}/hokhau/themnguoi`, { nhanKhau: formInfo, soHoKhau })
+                setChangeUI(pre => !pre)
+            }
+            catch (error) {
+                console.log('Error:', error)
+            }
+
         }
         fetchData()
         setFormInfo({})
