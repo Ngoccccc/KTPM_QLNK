@@ -5,8 +5,8 @@ import {
     Button
 } from '@mui/material'
 import SearchData from '../../components/SearchData'
-import TableHoKhau from './../../components/TableHoKhau';
-import AddTamTru from './../../components/AddTamTru'
+import TableToDetail from '../../components/TableToDetail';
+import AddTamTru from '../../components/AddModal'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { apiURL } from '../../utils/constant';
@@ -68,7 +68,7 @@ const HopToDanPho = () => {
                 <Button onClick={() => setOpenAddTamTru(true)}>Tạo cuộc họp mới</Button>
             </Grid>
             <AddTamTru addProps={addProps} />
-            <TableHoKhau tableProps={tableProps} />
+            <TableToDetail tableProps={tableProps} />
         </div>
     )
 }

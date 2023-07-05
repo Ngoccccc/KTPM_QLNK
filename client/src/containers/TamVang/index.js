@@ -7,7 +7,7 @@ import {
     Button
 } from '@mui/material'
 import Modal from '../../components/Modal'
-import AddTamTru from '../../components/AddTamTru'
+import AddModal from '../../components/AddModal'
 import listData from '../../contants/DataTestTamTru';
 import axios from 'axios';
 import { apiURL } from '../../utils/constant';
@@ -23,7 +23,7 @@ const TamVang = () => {
     ]
     const [openDetail, setOpenDetail] = useState(false);
     const [selectTable, setSelectTable] = useState()
-    const [searchTable, setSearchTable] = useState(listData)
+    const [searchTable, setSearchTable] = useState([])
     const [changeUI, setChangeUI] = useState(false)
     useEffect(() => {
         const fetchData = async () => {
@@ -77,7 +77,7 @@ const TamVang = () => {
                 <Button onClick={() => setOpenAddTamTru(true)}>Tạo tạm vắng mới</Button>
             </Grid>
             <TableContainer tableProps={tableProps} />
-            <AddTamTru addProps={addProps} />
+            <AddModal addProps={addProps} />
             <Modal modalProps={modalProps} />
         </ >
     )

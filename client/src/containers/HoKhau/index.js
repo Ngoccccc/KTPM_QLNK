@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import SearchData from '../../components/SearchData'
-import TableHoKhau from './../../components/TableHoKhau';
+import TableHoKhau from './../../components/TableToDetail';
 import { apiURL } from '../../utils/constant';
 import axios from 'axios';
 

@@ -15,7 +15,7 @@ import {
 import NhanKhauModal from '../../components/NhanKhauModal'
 import TableTachKhau from './../../components/TableTachKhau';
 import AddNhanKhau from '../../components/AddNhanKhau'
-import Modal from '../../components/Modal'
+
 
 import axios from 'axios'
 import { apiURL } from '../../utils/constant'
@@ -37,21 +37,21 @@ const HoKhauDetail = () => {
         { field: 'Quan hệ với chủ hộ', properties: 'quanHeVoiChuHo' }
     ]
 
-    const moreNhanKhauField = [
-        { field: 'Họ và tên', properties: 'hoTen' },
-        { field: 'Số chứng minh nhân dân', properties: 'soCCCD' },
-        { field: 'Ngày cấp', properties: 'ngayCap' },
-        { field: 'Nơi cấp', properties: 'noiCap' },
-        { field: 'Bí danh', properties: 'biDanh' },
-        { field: 'Giới tính', properties: 'gioiTinh' },
-        { field: 'Ngày Tháng Năm sinh', properties: 'ngayThangNamSinh' },
-        { field: 'Nơi sinh', properties: 'noiSinh' },
-        { field: 'Nguyên quán', properties: 'nguyenQuan' },
-        { field: 'Dân tộc', properties: 'danToc' },
-        { field: 'Quốc tịch', properties: 'quocTich' },
-        { field: 'Nghề nghiệp', properties: 'ngheNghiep' },
-        { field: 'Nơi làm việc', properties: 'noiLamViec' }
-    ]
+    // const moreNhanKhauField = [
+    //     { field: 'Họ và tên', properties: 'hoTen' },
+    //     { field: 'Số chứng minh nhân dân', properties: 'soCCCD' },
+    //     { field: 'Ngày cấp', properties: 'ngayCap' },
+    //     { field: 'Nơi cấp', properties: 'noiCap' },
+    //     { field: 'Bí danh', properties: 'biDanh' },
+    //     { field: 'Giới tính', properties: 'gioiTinh' },
+    //     { field: 'Ngày Tháng Năm sinh', properties: 'ngayThangNamSinh' },
+    //     { field: 'Nơi sinh', properties: 'noiSinh' },
+    //     { field: 'Nguyên quán', properties: 'nguyenQuan' },
+    //     { field: 'Dân tộc', properties: 'danToc' },
+    //     { field: 'Quốc tịch', properties: 'quocTich' },
+    //     { field: 'Nghề nghiệp', properties: 'ngheNghiep' },
+    //     { field: 'Nơi làm việc', properties: 'noiLamViec' }
+    // ]
 
     const [listData, setListData] = useState({
         hoKhau: {}, nhanKhau: [],

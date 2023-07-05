@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react'
 import {
     Typography,
     Grid,
-    Button
 } from '@mui/material'
 import SearchData from '../../components/SearchData'
-import TableHoKhau from './../../components/TableHoKhau';
 import axios from 'axios'
 
 import { apiURL } from '../../utils/constant';

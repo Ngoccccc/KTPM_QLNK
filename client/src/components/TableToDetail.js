@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
     TableContainer,
     Paper,
@@ -11,7 +11,7 @@ import {
 import { Info as InfoIcon } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import './index.css'
-const TableHoKhau = ({ tableProps }) => {
+const TableToDetail = ({ tableProps }) => {
 
     const { path, searchTable } = tableProps
 
@@ -50,4 +50,4 @@ const TableHoKhau = ({ tableProps }) => {
     )
 }
 
-export default TableHoKhau
+export default TableToDetail

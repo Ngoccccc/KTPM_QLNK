@@ -7,7 +7,7 @@ import {
     Button
 } from '@mui/material'
 import Modal from '../../components/Modal'
-import AddTamTru from '../../components/AddTamTru'
+import AddModal from '../../components/AddModal'
 import listData from '../../contants/DataTestTamTru';
 import axios from 'axios';
 import { apiURL } from '../../utils/constant';
@@ -77,7 +77,7 @@ const TamTru = () => {
                 <Button onClick={() => setOpenAddTamTru(true)}>Tạo tạm trú mới</Button>
             </Grid>
             <TableContainer tableProps={tableProps} />
-            <AddTamTru addProps={addProps} />
+            <AddModal addProps={addProps} />
             <Modal modalProps={modalProps} />
         </ >
     )

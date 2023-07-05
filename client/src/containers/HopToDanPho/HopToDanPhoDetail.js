@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Typography, Button, Grid, TextField, Stack } from "@mui/material";
-import { AddCircleOutline, Edit } from "@mui/icons-material";
-import { dataDetail } from "../../contants/DataTestHoKhau";
-import NhanKhauModal from "../../components/NhanKhauModal";
-import TableTachKhau from "./../../components/TableTachKhau";
+import { Edit } from "@mui/icons-material";
 import TableController from "../../components/TableContainer";
-import AddNhanKhau from "../../components/AddNhanKhau";
-import Modal from "../../components/Modal";
-import SearchData from "../../components/SearchData";
-import HopToDanPho from "./index";
+
 import { apiURL } from "../../utils/constant";
 import axios from "axios";
 const HoKhauDetail = () => {
@@ -26,10 +20,10 @@ const HoKhauDetail = () => {
         { field: "Số căn cước chủ hộ", properties: "soCCCD" },
     ];
 
-    const [openAddMember, setOpenAddMember] = useState(false);
+
     const { id } = useParams();
     const num = parseInt(id);
-    const [selectTable, setSelectTable] = useState()
+
     const [listData, setListData] = useState([])
     const [newData, setNewData] = useState([])
     const [changeUI, setChangeUI] = useState(false);
