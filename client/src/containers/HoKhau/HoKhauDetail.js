@@ -68,10 +68,15 @@ const HoKhauDetail = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.post(`${apiURL}/hokhau`, { soHoKhau: num })
-            console.log(data)
-            setListData(data.data)
-            setNewData(data.data.hoKhau)
+            try {
+                const data = await axios.post(`${apiURL}/hokhau`, { soHoKhau: num })
+                console.log(data)
+                setListData(data.data)
+                setNewData(data.data.hoKhau)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
     }, [changeUI])
@@ -102,8 +107,13 @@ const HoKhauDetail = () => {
         setEditable(false);
         console.log(listData)
         const fetchData = async () => {
-            const data = await axios.post(`${apiURL}/hokhau/suathongtin`, newData)
-            console.log(data)
+            try {
+                const data = await axios.post(`${apiURL}/hokhau/suathongtin`, newData)
+                console.log(data)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
         // setChangeUI(pre => !pre)

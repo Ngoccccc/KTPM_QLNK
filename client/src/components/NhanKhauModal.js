@@ -51,9 +51,14 @@ const NhanKhauModal = ({ openDetail, setOpenDetail, data, xoaNhanKhau, setChange
         setEditable(false);
         console.log(newData)
         const fetchData = async () => {
-            const data = await axios.post(`${apiURL}/nhankhau/thaydoithongtin`, newData)
-            setChangeUI(pre => !pre)
-            console.log(data)
+            try {
+                const data = await axios.post(`${apiURL}/nhankhau/thaydoithongtin`, newData)
+                setChangeUI(pre => !pre)
+                console.log(data)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
         // Save the edited newData

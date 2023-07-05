@@ -125,9 +125,13 @@ const HoKhauDetail = () => {
                                         onChange={(e) => handleNewDataChange(value.properties, e)}
                                     />
                                 )}
+                                <Typography>
+
+                                </Typography>
                             </Grid>
                         </div>
                     ))}
+                    <Typography>Số hộ đã tham gia: {listData.length}</Typography>
                 </Stack>
                 <Grid>
                     <Typography sx={{ marginTop: 1, marginLeft: 4 }}>

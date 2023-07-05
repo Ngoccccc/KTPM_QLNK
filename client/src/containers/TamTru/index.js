@@ -27,8 +27,13 @@ const TamTru = () => {
     const [changeUI, setChangeUI] = useState(false)
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`)
-            setSearchTable(data.data.TamTru)
+            try {
+                const data = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`)
+                setSearchTable(data.data.TamTru)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
     }, [changeUI])

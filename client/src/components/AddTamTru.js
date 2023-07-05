@@ -38,15 +38,20 @@ const AddNhanKhau = ({ addProps }) => {
   const handleSubmit = () => {
     setOpenAddTamTru(false);
     const fetchData = async () => {
-      if (type === "hopToDanPho") {
-        const data = await axios.post(`${apiURL}/hoptodanpho/tao`, formInfo);
-        setChangeUI((pre) => !pre);
-      } else if (type === "tamTru") {
-        const data = await axios.post(`${apiURL}/nhankhau/tamtru`, formInfo);
-        setChangeUI((pre) => !pre);
-      } else if (type === "tamVang") {
-        const data = await axios.post(`${apiURL}/nhankhau/tamvang`, formInfo);
-        setChangeUI((pre) => !pre);
+      try {
+        if (type === "hopToDanPho") {
+          const data = await axios.post(`${apiURL}/hoptodanpho/tao`, formInfo);
+          setChangeUI((pre) => !pre);
+        } else if (type === "tamTru") {
+          const data = await axios.post(`${apiURL}/nhankhau/tamtru`, formInfo);
+          setChangeUI((pre) => !pre);
+        } else if (type === "tamVang") {
+          const data = await axios.post(`${apiURL}/nhankhau/tamvang`, formInfo);
+          setChangeUI((pre) => !pre);
+        }
+      }
+      catch (error) {
+        console.log("loi")
       }
     };
     fetchData();

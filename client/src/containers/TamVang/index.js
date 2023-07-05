@@ -28,8 +28,13 @@ const TamVang = () => {
     const [changeUI, setChangeUI] = useState(false)
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`)
-            setSearchTable(data.data.TamVang)
+            try {
+                const data = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`)
+                setSearchTable(data.data.TamVang)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
     }, [changeUI])

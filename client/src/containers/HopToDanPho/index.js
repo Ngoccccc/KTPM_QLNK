@@ -24,10 +24,15 @@ const HopToDanPho = () => {
     const [changeUI, setChangeUI] = useState(false)
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/hoptodanpho`)
-            console.log(data)
-            setSearchTable(data.data)
-            setListData(data.data)
+            try {
+                const data = await axios.get(`${apiURL}/hoptodanpho`)
+                console.log(data)
+                setSearchTable(data.data)
+                setListData(data.data)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
     }, [changeUI])

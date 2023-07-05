@@ -23,27 +23,26 @@ const ThongKe = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/nhankhau/thongke/gioitinh`);
-            setListGioiTinh(data.data);
-            console.log(listGioiTinh);
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`);
-            setListTrangThai(data.data);
-            console.log(listTrangThai);
+            try {
+                const dataGioiTinh = await axios.get(`${apiURL}/nhankhau/thongke/gioitinh`);
+                setListGioiTinh(dataGioiTinh.data);
+                console.log(listGioiTinh);
+                const dataTrangThai = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`);
+                setListTrangThai(dataTrangThai.data);
+                console.log(listTrangThai);
+                const dataDoTuoi = await axios.post(`${apiURL}/nhankhau/thongke/dotuoi`, khoangTuoi);
+                setListDoTuoi(dataDoTuoi.data);
+            }
+            catch (error) {
+                console.log(error)
+            }
         };
         fetchData();
     }, []);
 
     const handleGetAge = () => {
         const fetchData = async () => {
-            const data = await axios.post(`${apiURL}/nhankhau/thongke/dotuoi`, khoangTuoi);
-            setListDoTuoi(data.data);
-            console.log(data.data);
+
         };
         fetchData()
     }

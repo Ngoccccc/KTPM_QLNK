@@ -19,9 +19,14 @@ const HoKhau = () => {
     const [listData, setListData] = useState([])
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/hokhau`)
-            setSearchTable(data.data)
-            setListData(data.data)
+            try {
+                const data = await axios.get(`${apiURL}/hokhau`)
+                setSearchTable(data.data)
+                setListData(data.data)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
     }, [])

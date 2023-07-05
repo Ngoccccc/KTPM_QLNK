@@ -70,9 +70,14 @@ const TableTachKhau = ({ tableProps }) => {
         setOpenBasicInfo(false);
         setShow(prev => !prev)
         const fetchData = async () => {
-            const data = await axios.post(`${apiURL}/hokhau/tachhokhau`, reqData)
-            tableProps.setChangeUI(pre => !pre)
-            console.log(data)
+            try {
+                const data = await axios.post(`${apiURL}/hokhau/tachhokhau`, reqData)
+                tableProps.setChangeUI(pre => !pre)
+                console.log(data)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
         tableProps.setChangeUI(pre => !pre)
