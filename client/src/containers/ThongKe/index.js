@@ -58,7 +58,7 @@ const ThongKe = () => {
         <>
             <div>Thống kê nhân khẩu</div>
             <Typography>Thống kê giới tính: </Typography>
-            <Grid container >
+            <Grid container direction="column">
                 <Grid >
                     <Typography>
                         Nam : {!listGioiTinh.Nam?.length ? "loading" : listGioiTinh.Nam.length}

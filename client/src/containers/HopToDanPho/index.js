@@ -8,6 +8,7 @@ import SearchData from '../../components/SearchData'
 import TableHoKhau from './../../components/TableHoKhau';
 import AddTamTru from './../../components/AddTamTru'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import { apiURL } from '../../utils/constant';
 const HopToDanPho = () => {
     const hopToDanPhoField = [
@@ -17,6 +18,7 @@ const HopToDanPho = () => {
         { field: 'Thời gian kết thúc', properties: 'thoiGianKetThuc' },
     ]
 
+    const navigate = useNavigate()
     const [listData, setListData] = useState([])
     const [searchTable, setSearchTable] = useState([])
     const [changeUI, setChangeUI] = useState(false)
@@ -53,6 +55,7 @@ const HopToDanPho = () => {
 
     return (
         <div>
+            <Button onClick={() => navigate("/hoptodanpho/binhbau")}>Xem thành tích đã tham gia họp</Button>
             <SearchData searchProps={searchProps} />
             <Grid container
                 justifyContent="space-between">

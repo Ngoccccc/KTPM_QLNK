@@ -138,9 +138,9 @@ const TableTachKhau = ({ tableProps }) => {
                 </Stack>
             </Grid>
             <TableContainer component={Paper} sx={{
-                minWidth: 650, maxHeight: 460, borderTop: 2, marginTop: 2
+                minWidth: 400, maxHeight: 370, borderTop: 2, marginTop: 2
             }}>
-                <Table stickyHeader aria-label="sticky table" className='sticky'>
+                <Table stickyHeader className='sticky' >
 
                     <TableHead>
                         <TableRow>

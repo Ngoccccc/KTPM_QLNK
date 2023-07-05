@@ -16,6 +16,7 @@ import TamVang from './containers/TamVang';
 import HoKhauDetail from './containers/HoKhau/HoKhauDetail';
 import Login from './containers/Login';
 import HopToDanPhoDetail from './containers/HopToDanPho/HopToDanPhoDetail'
+import BinhBau from './containers/HopToDanPho/BinhBau';
 function App() {
   return (
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/hoptodanpho">
             <Route index element={<HopToDanPho />} />
             <Route path=":id" element={<HopToDanPhoDetail />} />
+            <Route path="binhbau" element={<BinhBau />} />
           </Route>
           <Route path="/thongke" element={<ThongKe />} />
         </Route>

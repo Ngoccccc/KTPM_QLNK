@@ -18,7 +18,7 @@ const TableController = ({ tableProps }) => {
         tableProps.setSelectTable(data)
         tableProps.setOpenDetail(true)
     }
-
+    console.log(tableProps)
     return (
         <TableContainer component={Paper} sx={{
             minWidth: 650, maxHeight: 460, borderTop: 2, marginTop: 2

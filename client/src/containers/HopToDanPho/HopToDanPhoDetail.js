@@ -28,30 +28,34 @@ const HoKhauDetail = () => {
     const [openAddMember, setOpenAddMember] = useState(false);
     const { id } = useParams();
     const num = parseInt(id);
-    console.log(typeof num);
-    console.log(num);
-
     const [listData, setListData] = useState([])
     const [newData, setNewData] = useState([])
+    const [changeUI, setChangeUI] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await axios.post(`${apiURL}/hoptodanpho/xem`, { id: num });
-                setListData(data.data.hothamgia)
-                setNewData(data.data.hothamgia)
+                setListData(data.data.hoThamGia)
+                setNewData(data.data)
             }
             catch (err) {
                 console.log(err)
             }
-
         }
         fetchData()
-    }, [])
+    }, [changeUI])
     const tableProps = {
         componentField: ghiNhan,
         dataTable: listData,
         num
     }
+
+    // const searchProps = {
+    //     listData,
+    //     setSearchTable,
+    //     componentSearch: hopToDanPhoField
+    // }
+
     const [editable, setEditable] = useState(false);
 
     const handleEdit = () => {
@@ -70,6 +74,23 @@ const HoKhauDetail = () => {
             [field]: event.target.value,
         });
     };
+
+    const [soCCCDDiemDanh, setSoCCCDDiemDanh] = useState(0)
+    const getSoCCCDDiemDanh = (e) => {
+        setSoCCCDDiemDanh(parseInt(e.target.value))
+    }
+    const handleDiemDanh = () => {
+        const fetchData = async () => {
+            try {
+                const data = await axios.post(`${apiURL}/hoptodanpho/thamgia`, { id: num, soCCCD: soCCCDDiemDanh });
+                setChangeUI(pre => !pre)
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        fetchData()
+    }
 
     return (
         <div>
@@ -106,6 +127,22 @@ const HoKhauDetail = () => {
                         </div>
                     ))}
                 </Stack>
+                <Grid>
+                    <Typography sx={{ marginTop: 1, marginLeft: 4 }}>
+                        Số chứng minh nhân dân
+                    </Typography>
+                    <TextField
+                        sx={{ paddingLeft: 2, marginBottom: 1 }}
+                        onChange={getSoCCCDDiemDanh}
+                    />
+                    <Button align="right" sx={{ marginBottom: 2 }}
+                        style={{
+                            color: '#1976d2'
+                        }}
+                        onClick={handleDiemDanh}
+                    >
+                        Điểm danh</Button>
+                </Grid>
             </Grid>
             {/* <SearchData /> */}
             <TableController tableProps={tableProps} />
