@@ -1,166 +1,3 @@
-drop database db_ktpm;
-
-create database db_ktpm;
-
-use db_ktpm;
-
-CREATE TABLE
-    `user` (
-        `id` int PRIMARY KEY AUTO_INCREMENT,
-        `username` VARCHAR(50),
-        `password` VARCHAR(50),
-        `soCCCD` int,
-        `role` VARCHAR(50),
-        `token` VARCHAR(50),
-        `refeshtoken` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `sohokhau` (
-        `soHoKhau` int PRIMARY KEY,
-        `soNha` int,
-        `duongPho` VARCHAR(50),
-        `phuong` VARCHAR(50),
-        `quan` VARCHAR(50),
-        `ngayTao` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `nhankhau` (
-        `soCCCD` int PRIMARY KEY,
-        `hoTen` VARCHAR(50),
-        `biDanh` VARCHAR(50),
-        `gioiTinh` VARCHAR(50),
-        `ngayThangNamSinh` Date,
-        `noiSinh` VARCHAR(50),
-        `nguyenQuan` VARCHAR(50),
-        `dantoc` VARCHAR(50),
-        `quocTich` VARCHAR(50),
-        `ngheNghiep` VARCHAR(50),
-        `noiLamViec` VARCHAR(50),
-        `ngayCap` Date,
-        `noiCap` VARCHAR(50),
-        `quanHeVoiChuHo` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `giaytamvang` (
-        `id` int PRIMARY KEY,
-        `diaChiThuongChu` VARCHAR(50),
-        `hoKhauTamVang` int,
-        `soCCCD` int,
-        `ngayBatDau` Date,
-        `ngayKetThuc` Date,
-        `ngayDangKi` Date,
-        `lyDoTamVang` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `giaytamtru` (
-        `id` int PRIMARY KEY,
-        `diaChiThuongChu` VARCHAR(50),
-        `hoKhauTamTru` int,
-        `soCCCD` int,
-        `ngayBatDau` Date,
-        `ngayKetThuc` Date,
-        `ngayDangKi` Date,
-        `lyDoTamTru` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `thaydoinhankhau` (
-        `id` int,
-        `soCCCD` int,
-        `loaiThayDoi` VARCHAR(50),
-        `ngayThayDoi` Date,
-        `chiTietThayDoi` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `thaydoihokhau` (
-        `soHoKhau` int,
-        `loaiThayDoi` VARCHAR(50),
-        `ngayThayDoi` Date,
-        `chiTietThayDoi` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `thuoc` (
-        `soHoKhau` int,
-        `soCCCD` int,
-        primary key (`soHoKhau`, `soCCCD`)
-    );
-
-CREATE TABLE
-    `chuho` (
-        `soHoKhau` int,
-        `soCCCD` int,
-        primary key (`soHoKhau`, `soCCCD`)
-    );
-
-CREATE TABLE
-    `hoptodanpho` (
-        `id` int primary key,
-        `thoiGianBatDau` Date,
-        `diaDiem` VARCHAR(50)
-    );
-
-CREATE TABLE
-    `hothamgia` (
-        `id` int primary key,
-        `soHoKhau` int
-    );
-
-ALTER TABLE `hothamgia`
-ADD
-    FOREIGN KEY (`soHoKhau`) REFERENCES `sohokhau` (`soHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `hothamgia`
-ADD
-    FOREIGN KEY (`id`) REFERENCES `hoptodanpho` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `thuoc`
-ADD
-    FOREIGN KEY (`soHoKhau`) REFERENCES `sohokhau` (`soHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `thuoc`
-ADD
-    FOREIGN KEY (`soCCCD`) REFERENCES `nhankhau` (`soCCCD`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `chuho`
-ADD
-    FOREIGN KEY (`soHoKhau`) REFERENCES `sohokhau` (`soHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `chuho`
-ADD
-    FOREIGN KEY (`soCCCD`) REFERENCES `nhankhau` (`soCCCD`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `thaydoinhankhau`
-ADD
-    FOREIGN KEY (`soCCCD`) REFERENCES `nhankhau` (`soCCCD`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `giaytamvang`
-ADD
-    FOREIGN KEY (`soCCCD`) REFERENCES `nhankhau` (`soCCCD`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `giaytamvang`
-ADD
-    FOREIGN KEY (`hoKhauTamVang`) REFERENCES `sohokhau` (`soHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `giaytamtru`
-ADD
-    FOREIGN KEY (`soCCCD`) REFERENCES `nhankhau` (`soCCCD`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `giaytamtru`
-ADD
-    FOREIGN KEY (`hoKhauTamTru`) REFERENCES `sohokhau` (`soHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `thaydoihokhau`
-ADD
-    FOREIGN KEY (`soHoKhau`) REFERENCES `sohokhau` (`soHoKhau`) ON DELETE CASCADE ON UPDATE CASCADE;
-
--- fake data
-
 use db_ktpm;
 
 INSERT INTO
@@ -483,13 +320,16 @@ VALUES (
     );
 
 INSERT INTO
-    thuoc (
-        soHoKhau,
-        soCCCD,
+    thuoc (soHoKhau, soCCCD,
         createdAt,
+<<<<<<< HEAD
         updatedAt
     )
 VALUES (1, 123456780, NOW(), NOW()), (1, 246813578, NOW(), NOW()), (1, 987654320, NOW(), NOW()), (2, 123456789, NOW(), NOW()), (2, 246813579, NOW(), NOW()), (2, 135792468, NOW(), NOW()), (3, 987654327, NOW(), NOW()), (3, 987654321, NOW(), NOW()), (3, 987654323, NOW(), NOW()), (3, 246813570, NOW(), NOW());
+=======
+        updatedAt)
+VALUES (1, 123456780,now(),now()), (1, 246813578,now(),now()), (1, 987654320,now(),now()), (2, 123456789,now(),now()), (2, 246813579,now(),now()), (2, 135792468,now(),now()), (3, 987654327,now(),now()), (3, 987654321,now(),now()), (3, 987654323,now(),now()), (3, 246813570,now(),now());
+>>>>>>> ea96689a1a2d32405eab15d537df8a0e002fd7b4
 
 INSERT INTO
     chuho (
@@ -501,6 +341,7 @@ INSERT INTO
 VALUES (
         1,
         123456780,
+<<<<<<< HEAD
         2023 -07 -02,
         2023 -07 -02
     ), (
@@ -513,7 +354,115 @@ VALUES (
         987654327,
         2023 -05 -02,
         2023 -05 -02
+=======
+        "2023-07-02",
+        "2023-07-02"
+    ), (
+        2,
+        123456789,
+        "2023-06-02",
+        "2023-06-02"
+    ), (
+        3,
+        987654327,
+        "2023-05-02",
+        "2023-05-02"
+>>>>>>> ea96689a1a2d32405eab15d537df8a0e002fd7b4
     );
+
+
+INSERT INTO
+    User (
+        id,
+        username,
+        soCCCD,
+        password,
+        role,
+        createdAt,
+        updatedAt
+    )
+VALUES (
+        1,
+        'truong@gmail.com',
+        123456789,
+        'admin',
+        'admin',
+        NOW(),
+        NOW()
+    ), (
+        2,
+        'thanh@gmail.com',
+        987654320,
+        'pass1',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        3,
+        'minh@gmail.com',
+        123456780,
+        'pass2',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        4,
+        'ngoc@gmail.com',
+        987654327,
+        'pass3',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        5,
+        'tuan@gmail.com',
+        246813579,
+        'pass4',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        6,
+        'quan@gmail.com',
+        135792468,
+        'pass5',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        7,
+        'nhat@gmail.com',
+        246813578,
+        'pass6',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        8,
+        'nghia@gmail.com',
+        987654321,
+        'pass7',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        9,
+        'tien@gmail.com',
+        987654323,
+        'pass8',
+        'user',
+        NOW(),
+        NOW()
+    ), (
+        10,
+        'dquan@gmail.com',
+        246813570,
+        'pass9',
+        'user',
+        NOW(),
+        NOW()
+    );
+
 
 INSERT INTO
     giaytamtru (

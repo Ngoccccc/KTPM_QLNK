@@ -6,10 +6,13 @@ const HopToDanPho = require("./HopToDanPho");
 const HoThamGia = conn.define(
   "HoThamGia",
   {
-    id: {
+    id_tablde: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      unique: true,
+      autoIncrement: true,
+    },
+    id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: HopToDanPho,
@@ -29,6 +32,7 @@ const HoThamGia = conn.define(
     tableName: "hothamgia",
   }
 );
+HoThamGia.removeAttribute("id");
 HoThamGia.belongsTo(SoHoKhau, {
   foreignKey: "soHoKhau",
   onDelete: "CASCADE",

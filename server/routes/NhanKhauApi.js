@@ -1,4 +1,3 @@
-
 var express = require("express");
 var NhanKhau = require("../models/NhanKhau");
 var NhanKhau = require("../models/NhanKhau");
@@ -31,7 +30,7 @@ router.get("/", async function (req, res, next) {
     var nhanKhau = await NhanKhau.findAll();
     res.json(nhanKhau);
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
@@ -46,16 +45,14 @@ router.post("/doihokhau", async function (req, res, next) {
         },
       }
     );
-    res.json({ "status": "ok" })
+    res.json({ status: "ok" });
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
 
-
 router.post("/thaydoithongtin", async function (req, res, next) {
-
   try {
     // const fieldsToUpdate = [
     //   "hoTen",
@@ -84,27 +81,23 @@ router.post("/thaydoithongtin", async function (req, res, next) {
       }
     }
 
-    await NhanKhau.update(dataToUpdate,
-      {
-        where: {
-          soCCCD: req.body.soCCCD,
-        },
-      }
-    );
+    await NhanKhau.update(dataToUpdate, {
+      where: {
+        soCCCD: req.body.soCCCD,
+      },
+    });
 
     result = await NhanKhau.findOne({
       where: { soCCCD: req.body.soCCCD },
     });
-    res.json({ result })
+    res.json({ result });
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
 
-
-
-router.post('/tamtru', async function (req, res, next) {
+router.post("/tamtru", async function (req, res, next) {
   try {
     // Extract data from the request body
     // const {
@@ -133,20 +126,18 @@ router.post('/tamtru', async function (req, res, next) {
       ngayBatDau,
       ngayKetThuc,
       ngayDangKi,
-      lyDoTamTru
+      lyDoTamTru,
     });
 
     // Data added successfully
-    res.json({ message: 'Data added to giaytamtru table' });
+    res.json({ message: "Data added to giaytamtru table" });
   } catch (error) {
-    console.error('Error adding data to giaytamtru table:', error);
+    console.error("Error adding data to giaytamtru table:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
 
-
-
-router.post('/tamvang', async function (req, res, next) {
+router.post("/tamvang", async function (req, res, next) {
   try {
     // Extract data from the request body
     const diaChiThuongChu = req.body.diaChiThuongChu;
@@ -165,56 +156,46 @@ router.post('/tamvang', async function (req, res, next) {
       ngayBatDau,
       ngayKetThuc,
       ngayDangKi,
-      lyDoTamVang
+      lyDoTamVang,
     });
-
   } catch (error) {
-    console.error('Error adding data to giaytamvang table:', error);
+    console.error("Error adding data to giaytamvang table:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
 
-
-
-router.get('/thongke/gioitinh', async function (req, res, next) {
+router.get("/thongke/gioitinh", async function (req, res, next) {
   try {
     var result_nam = await NhanKhau.findAll({
-      where: { gioiTinh: 'Nam' },
+      where: { gioiTinh: "Nam" },
     });
     var result_nu = await NhanKhau.findAll({
-      where: { gioiTinh: 'Nữ' },
+      where: { gioiTinh: "Nữ" },
     });
-    res.json({ "Nam": result_nam, "Nu": result_nu })
-
+    res.json({ Nam: result_nam, Nu: result_nu });
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
 
-
-router.get('/thongke/tamtrutamvang', async function (req, res, next) {
+router.get("/thongke/tamtrutamvang", async function (req, res, next) {
   try {
-    var result_tamtru = await GiayTamTru.findAll({
-    });
-    var result_tamvang = await GiayTamVang.findAll({
-    });
-    res.json({ "TamTru": result_tamtru, "TamVang": result_tamvang })
-
+    var result_tamtru = await GiayTamTru.findAll({});
+    var result_tamvang = await GiayTamVang.findAll({});
+    res.json({ TamTru: result_tamtru, TamVang: result_tamvang });
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });
 
-
-
-router.get('/thongke/dotuoi', async function (req, res, next) {
-  const maxAge = req.body.maxAge
-  const minAge = req.body.minAge
+router.post("/thongke/dotuoi", async function (req, res, next) {
+  const maxAge = req.body.maxAge;
+  const minAge = req.body.minAge;
   const currentDate = new Date();
-  const a = new Date(currentDate - maxAge * 365.25 * 24 * 60 * 60 * 1000)
-  const b = new Date(currentDate - minAge * 365.25 * 24 * 60 * 60 * 1000)
+  const a = new Date(currentDate - maxAge * 365.25 * 24 * 60 * 60 * 1000);
+  const b = new Date(currentDate - minAge * 365.25 * 24 * 60 * 60 * 1000);
   try {
     var result = await NhanKhau.findAll({
       where: {
@@ -224,10 +205,9 @@ router.get('/thongke/dotuoi', async function (req, res, next) {
       },
     });
 
-    res.json(result)
-
+    res.json(result);
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Error" });
   }
 });

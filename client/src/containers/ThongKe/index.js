@@ -102,15 +102,21 @@ const ThongKe = () => {
             </Grid>
 
             <Typography>Thống kê tạm trú , tạm vắng: </Typography>
-            <Grid container >
-                <Grid >
+            <Grid container direction="column">
+                <Grid>
                     <Typography>
-                        Số đơn tạm trú : {!listTrangThai.TamTru?.length ? "loading" : listTrangThai.TamTru.length}
+                        Số đơn tạm trú :{" "}
+                        {!listTrangThai.TamTru?.length
+                            ? "loading"
+                            : listTrangThai.TamTru.length}
                     </Typography>
                 </Grid>
-                <Grid >
+                <Grid>
                     <Typography>
-                        Số đơn tạm vắng : {!listTrangThai.TamVang?.length ? "loading" : listTrangThai.TamVang.length}
+                        Số đơn tạm vắng :{" "}
+                        {!listTrangThai.TamVang?.length
+                            ? "loading"
+                            : listTrangThai.TamVang.length}
                     </Typography>
                 </Grid>
             </Grid>

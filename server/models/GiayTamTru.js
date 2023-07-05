@@ -13,7 +13,6 @@ const GiayTamTru = conn.define(
     },
     hoKhauTamTru: {
       type: DataTypes.INTEGER,
-      unique: false,
       allowNull: false,
       references: {
         model: SoHoKhau,
