@@ -153,6 +153,7 @@ router.post("/themnguoi", async function (req, res, next) {
     });
   }
 });
+router.delete("/tachhokhau", async function (req, res, next) {});
 router.post("/tachhokhau", async function (req, res, next) {
   try {
     // update quanHeVoiChuHo thanh "Chủ hộ", tạo hộ khẩu mới, thêm chủ hộ mới

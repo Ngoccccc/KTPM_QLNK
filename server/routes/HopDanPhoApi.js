@@ -135,4 +135,28 @@ router.get("/binhbau", async function (req, res, next) {
     res.status(500).json({ error: "Internal Error" });
   }
 });
+
+router.post("/sua", async function (req, res, next) {
+  try {
+    let result = await HopToDanPho.update(
+      {
+        thoiGianBatDau: req.body.thoiGianBatDau,
+        thoiGianKetThuc: req.body.thoiGianKetThuc,
+        noiDung: req.body.noiDung,
+        diaDiem: req.body.diaDiem,
+      },
+      {
+        where: { id: req.body.id },
+      }
+    );
+    if (result !== null) {
+      res.json({ status: true });
+    } else {
+      res.json({ status: false });
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Error" });
+  }
+});
 module.exports = router;
