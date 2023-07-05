@@ -47,7 +47,7 @@ router.post("/xem", async function (req, res, next) {
         where: { id: id_hop },
       });
     }
-    result.dataValues.hothamgia = result_hoThamGia;
+    result.dataValues.hoThamGia = result_hoThamGia;
 
     res.json(result);
   } catch (error) {
@@ -112,4 +112,19 @@ router.post("/tao", async function (req, res, next) {
   }
 });
 
+router.get("/binhbau", async function (req, res, next) {
+  try {
+    let result = await conn.query(
+      "Select soHoKhau, count(id) solan from hothamgia group by soHoKhau"
+    );
+    if (result !== null) {
+      res.json(result.at(0));
+    } else {
+      res.json({ message: "Khong tim thay" });
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Error" });
+  }
+});
 module.exports = router;
