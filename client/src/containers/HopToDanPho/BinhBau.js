@@ -14,8 +14,8 @@ const BinhBau = () => {
     const ghiNhan = [
         { field: 'Số hộ khẩu', properties: 'soHoKhau' },
         { field: 'Số lần tham gia họp', properties: 'solan' },
-        // { field: 'Thời gian bắt đầu', properties: 'thoiGianBatDau' },
-        // { field: 'Thời gian kết thúc', properties: 'thoiGianKetThuc' },
+        // { field: 'Họ và tên chủ hộ', properties: 'thoiGianBatDau' },
+        // { field: 'Số căn cước chủ hộ', properties: 'thoiGianKetThuc' },
     ]
 
 
@@ -24,10 +24,15 @@ const BinhBau = () => {
     const [changeUI, setChangeUI] = useState(false)
     useEffect(() => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/hoptodanpho/binhbau`)
-            console.log(data.data)
-            setSearchTable(data.data)
-            setListData(data.data)
+            try {
+                const data = await axios.get(`${apiURL}/hoptodanpho/binhbau`)
+                console.log(data.data)
+                setSearchTable(data.data)
+                setListData(data.data)
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
         fetchData()
     }, [changeUI])
@@ -40,7 +45,7 @@ const BinhBau = () => {
 
     const tableProps = {
         componentField: ghiNhan,
-        searchTable,
+        dataTable: searchTable,
     }
 
     return (

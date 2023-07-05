@@ -15,8 +15,10 @@ import {
 const TableController = ({ tableProps }) => {
 
     const handleClickTable = (data) => {
-        tableProps.setSelectTable(data)
-        tableProps.setOpenDetail(true)
+        if (tableProps?.setSelectTable) {
+            tableProps.setSelectTable(data)
+            tableProps.setOpenDetail(true)
+        }
     }
     console.log(tableProps)
     return (
@@ -37,7 +39,9 @@ const TableController = ({ tableProps }) => {
                         onClick={() => handleClickTable(data)}
                     >
                         <TableCell>{data[tableProps.componentField[0].properties]}</TableCell>
-                        {tableProps.componentField.slice(1).map((body, id) => (<TableCell align="right" key={id}>{data[body.properties]}</TableCell>))}
+                        {tableProps.componentField.slice(1).map((body, id) => (
+                            <TableCell align="right" key={id}>{data[body.properties] || (data.chuHo ? data.chuHo[body.properties] : "loading")}</TableCell>
+                        ))}
                     </TableRow>
                     ))}
                 </TableBody>

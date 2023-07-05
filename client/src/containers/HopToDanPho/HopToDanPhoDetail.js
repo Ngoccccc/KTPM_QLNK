@@ -21,13 +21,15 @@ const HoKhauDetail = () => {
     ];
 
     const ghiNhan = [
-        { field: "Nội dung cuộc họp", properties: "noiDung" },
         { field: "Hộ đã tham dự", properties: "soHoKhau" },
+        { field: "Tên chủ hộ", properties: "hoTen" },
+        { field: "Số căn cước chủ hộ", properties: "soCCCD" },
     ];
 
     const [openAddMember, setOpenAddMember] = useState(false);
     const { id } = useParams();
     const num = parseInt(id);
+    const [selectTable, setSelectTable] = useState()
     const [listData, setListData] = useState([])
     const [newData, setNewData] = useState([])
     const [changeUI, setChangeUI] = useState(false);
