@@ -46,9 +46,17 @@ router.post("/xem", async function (req, res, next) {
       var result_hoThamGia = await HoThamGia.findAll({
         where: { id: id_hop },
       });
+      if (result_hoThamGia) {
+        result.dataValues.hoThamGia = result_hoThamGia;
+        for (var i = 0; i < result_hoThamGia.length; i++) {
+          var chuHoThamGia = await conn.query(
+            "select nk.* from nhankhau nk, chuho ch where nk.soCCCD = ch.soCCCD and ch.soHoKhau = " +
+              result_hoThamGia[i].dataValues.soHoKhau
+          );
+          result.dataValues.hoThamGia[i].dataValues.chuHo = chuHoThamGia[0][0];
+        }
+      }
     }
-    result.dataValues.hoThamGia = result_hoThamGia;
-
     res.json(result);
   } catch (error) {
     console.error("Error:", error);
