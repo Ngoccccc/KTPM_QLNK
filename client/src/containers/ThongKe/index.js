@@ -41,9 +41,9 @@ const ThongKe = () => {
 
     const handleGetAge = () => {
         const fetchData = async () => {
-            const data = await axios.get(`${apiURL}/nhankhau/thongke/dotuoi`, { khoangTuoi });
+            const data = await axios.post(`${apiURL}/nhankhau/thongke/dotuoi`, khoangTuoi);
             setListDoTuoi(data.data);
-            console.log(khoangTuoi);
+            console.log(data.data);
         };
         fetchData()
     }
@@ -97,7 +97,7 @@ const ThongKe = () => {
 
             <Grid container >
                 <Typography>
-                    Số người trong độ tuổi yêu cầu là : {!listDoTuoi?.length ? "loading" : listDoTuoi.length}
+                    Số người trong độ tuổi yêu cầu là : {!listDoTuoi?.length ? "Không có" : listDoTuoi.length}
                 </Typography>
             </Grid>
 
