@@ -96,7 +96,7 @@ export default function Dashboard() {
     // Các mục sidebar khác
   ];
 
-  const [selectedItem, setSelectedItem] = useState("item1");
+  const [selectedItem, setSelectedItem] = useState("");
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
@@ -139,7 +139,7 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              Quản lý nhân khẩu
             </Typography>
             {/* <Button color="inherit" onClick={handleLogout}>
               <Typography

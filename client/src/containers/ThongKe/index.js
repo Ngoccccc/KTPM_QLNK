@@ -30,8 +30,7 @@ const ThongKe = () => {
                 const dataTrangThai = await axios.get(`${apiURL}/nhankhau/thongke/tamtrutamvang`);
                 setListTrangThai(dataTrangThai.data);
                 console.log(listTrangThai);
-                const dataDoTuoi = await axios.post(`${apiURL}/nhankhau/thongke/dotuoi`, khoangTuoi);
-                setListDoTuoi(dataDoTuoi.data);
+
             }
             catch (error) {
                 console.log(error)
@@ -42,7 +41,8 @@ const ThongKe = () => {
 
     const handleGetAge = () => {
         const fetchData = async () => {
-
+            const dataDoTuoi = await axios.post(`${apiURL}/nhankhau/thongke/dotuoi`, khoangTuoi);
+            setListDoTuoi(dataDoTuoi.data);
         };
         fetchData()
     }

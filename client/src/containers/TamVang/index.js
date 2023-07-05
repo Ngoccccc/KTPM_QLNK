@@ -15,7 +15,6 @@ import { apiURL } from '../../utils/constant';
 const TamVang = () => {
     const tamVangField = [
         { field: 'Địa chỉ thường trú', properties: 'diaChiThuongChu' },
-        { field: 'Hộ khẩu tạm vắng', properties: 'hoKhauTamVang' },
         { field: 'Số chứng minh nhân dân', properties: 'soCCCD' },
         { field: 'Ngày bắt đầu tạm vắng', properties: 'ngayBatDau' },
         { field: 'Ngày kết thúc tạm vắng', properties: 'ngayKetThuc' },
@@ -74,8 +73,8 @@ const TamVang = () => {
             <Grid container
                 justifyContent="space-between">
 
-                <Typography>Thông tin tạm trú</Typography>
-                <Button onClick={() => setOpenAddTamTru(true)}>Tạo tạm trú mới</Button>
+                <Typography>Thông tin tạm Vắng</Typography>
+                <Button onClick={() => setOpenAddTamTru(true)}>Tạo tạm vắng mới</Button>
             </Grid>
             <TableContainer tableProps={tableProps} />
             <AddTamTru addProps={addProps} />

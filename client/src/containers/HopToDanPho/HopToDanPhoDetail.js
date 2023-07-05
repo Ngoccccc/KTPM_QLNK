@@ -66,6 +66,26 @@ const HoKhauDetail = () => {
 
     const handleSave = () => {
         setEditable(false);
+        const fetchData = async () => {
+            try {
+                const { noiDung,
+                    diaDiem,
+                    thoiGianKetThuc,
+                    thoiGianBatDau } = newData
+                const data = await axios.post(`${apiURL}/hoptodanpho/sua`, {
+                    id: num,
+                    noiDung,
+                    diaDiem,
+                    thoiGianKetThuc,
+                    thoiGianBatDau
+                });
+                setChangeUI(pre => !pre)
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        fetchData()
         console.log(newData);
         // Save the edited newData
     };
