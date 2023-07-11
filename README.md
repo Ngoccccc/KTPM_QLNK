@@ -13,6 +13,8 @@ B4: Sau khi đảm bảo rằng database đã kết nối hoàn tất. Ta tiến
  ```bash
  $ cd client
  $ npm install
+```
+```bash
  $ cd server
  $ npm install
 ```
@@ -22,6 +24,9 @@ B5: Sau khi đã tải thành công các thư viện cũng lần lượt vào cl
  ```bash
  $ cd client
  $ npm start
+```
+
+ ```bash
  $ cd server
  $ npm start
 ```
