@@ -8,7 +8,7 @@ $ cd KTPM_QLNK
 ```
 
 B2: Tải phần mềm Xampp về máy, cài đặt mysql sau đó có thể khởi động apache và mysql sau đó bật php myAdmin từ màn hình Xampp<br/>
-B3: Có thể thêm database có sẵn trong thư mục /server/models/db_query/create.sql  . Có thể chỉnh các config về database trong thư mục /server/models/connectDB<br/>
+B3: Có thể thêm database có sẵn trong thư mục /server/models/db_query/create.sql file này mọi người nên chạy câu lệnh tạo database, các bảng sẽ tự động được tạo khi start sever, dữ liệu cho các bảng mọi người có thể run các câu lệnh insert into có trong file "create.sql". Có thể chỉnh các config về database trong thư mục /server/models/connectDB<br/>
 B4: Sau khi đảm bảo rằng database đã kết nối hoàn tất. Ta tiến hành cài đặt các thư viện cần thiết<br/>
  ```bash
  $ cd client
