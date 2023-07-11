@@ -12,13 +12,14 @@ B4: Sau khi đảm bảo rằng database đã kết nối hoàn tất. Ta tiến
  $ cd client
  $ npm install
  $ cd server
- $ npm install```<br/>
-B5: Sau khi đã tải thành công các thư viện cũng lần lượt vào client và server để khởi chạy dự án<br/>
+ $ npm install```
+
+B5: Sau khi đã tải thành công các thư viện cũng lần lượt vào client và server để khởi chạy dự án <br/>
  ```bash
  $ cd client
  $ npm start
  $ cd server
- $ npm start```<br/>
+ $ npm start```
 
   Như vậy là bạn đã hoàn thiện quá trình cài đặt web quản lý nhân khẩu<br/>
   Nếu như vẫn không được hãy liên hệ:
