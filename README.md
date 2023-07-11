@@ -3,7 +3,7 @@ Các bước cài đặt phần mềm quản lý nhân khẩu:<br/>
 B1: git clone dự án về máy<br/>
 
 ```bash
-$ https://github.com/Ngoccccc/KTPM_QLNK.git
+$ git clone https://github.com/Ngoccccc/KTPM_QLNK.git
 $ cd KTPM_QLNK
 ```
 
