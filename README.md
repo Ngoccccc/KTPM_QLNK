@@ -20,14 +20,12 @@ B4: Sau khi đảm bảo rằng database đã kết nối hoàn tất. Ta tiến
 ```
 
 B5: Sau khi đã tải thành công các thư viện cũng lần lượt vào client và server để khởi chạy dự án <br/>
-
+client:
  ```bash
- $ cd client
  $ npm start
 ```
-
+server:
  ```bash
- $ cd server
  $ npm start
 ```
 
